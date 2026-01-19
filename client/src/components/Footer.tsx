@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <img
-                src="/images/illuminious-logo-blue.png"
+                src="/images/illuminious-logo-white.png"
                 alt="Illuminious"
                 className="h-10 w-10"
               />

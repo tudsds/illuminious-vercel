@@ -142,7 +142,7 @@ export default function Startups() {
               transition={{ duration: 0.6 }}
               className="flex items-center justify-center gap-6 mb-8"
             >
-              <img src="/images/illuminious-logo-blue.png" alt="Illuminious" className="h-12 w-12" />
+              <img src="/images/illuminious-logo-white.png" alt="Illuminious" className="h-12 w-12" />
               <span className="text-cyber-cyan text-2xl font-bold">×</span>
               <img src="/images/future-factory-logo.png" alt="Future Factory" className="h-10" />
             </motion.div>
