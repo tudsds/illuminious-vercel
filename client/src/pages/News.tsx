@@ -69,7 +69,7 @@ export default function News() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 bg-gradient-to-br from-illuminious-navy via-illuminious-blue to-illuminious-sky overflow-hidden">
+      <section className="relative pt-32 pb-16 bg-illuminious-light overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.3) 1px, transparent 0)`,
@@ -83,10 +83,10 @@ export default function News() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ color: '#132843' }}>
               News & Updates
             </h1>
-            <p className="text-xl text-illuminious-light/90">
+            <p className="text-xl text-illuminious-navy/70">
               Stay informed about the latest developments at Illuminious.
             </p>
           </motion.div>

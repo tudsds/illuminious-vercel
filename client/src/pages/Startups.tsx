@@ -140,11 +140,11 @@ export default function Startups() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center justify-center gap-4 mb-8"
+              className="flex items-center justify-center gap-6 mb-8"
             >
-              <img src="/images/illuminious-logo-icon.png" alt="Illuminious" className="h-12 w-12" />
+              <img src="/images/illuminious-logo-full.png" alt="Illuminious" className="h-12 w-12 brightness-0 invert" />
               <span className="text-cyber-cyan text-2xl font-bold">×</span>
-              <span className="text-cyber-cyan font-bold text-xl">Future Factory</span>
+              <img src="/images/future-factory-logo.png" alt="Future Factory" className="h-10" />
             </motion.div>
 
             <motion.div

@@ -266,15 +266,12 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Manufacturing Excellence Across Continents
               </h2>
-              <p className="text-illuminious-light/80 text-lg mb-8 leading-relaxed">
-                Our strategic locations in the USA, Indonesia (Batam Free Trade
-                Zone), and Shenzhen, China give you access to world-class
-                manufacturing capabilities with optimized logistics and
-                competitive pricing.
+              <p className="text-white/90 text-lg mb-8 leading-relaxed">
+                Our strategic locations in Palo Alto (HQ), Hong Kong (R&D), Indonesia (Production), and China (Production) give you access to world-class manufacturing capabilities with optimized logistics and competitive pricing.
               </p>
               <ul className="space-y-4 mb-8">
                 {features.slice(0, 4).map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-illuminious-light">
+                  <li key={feature} className="flex items-center gap-3 text-white">
                     <CheckCircle className="w-5 h-5 text-illuminious-sky flex-shrink-0" />
                     {feature}
                   </li>

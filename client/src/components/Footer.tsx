@@ -7,6 +7,7 @@ const footerLinks = {
     { label: "OEM", href: "/services/oem" },
     { label: "ODM", href: "/services/odm" },
     { label: "EMS", href: "/services/ems" },
+    { label: "PCBA", href: "/services/pcb" },
     { label: "Prototyping", href: "/services/prototyping" },
     { label: "Logistics", href: "/services/logistics" },
   ],
@@ -37,9 +38,9 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <img
-                src="/images/illuminious-logo-white.png"
+                src="/images/illuminious-logo-full.png"
                 alt="Illuminious"
-                className="h-10 w-10"
+                className="h-10 w-10 brightness-0 invert"
               />
               <span
                 className={`text-xl font-bold font-heading ${
@@ -158,6 +159,15 @@ export default function Footer() {
                 />
                 <a
                   href="mailto:info@illuminious.com"
+                  onClick={() => {
+                    // GTM tracking for email click
+                    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                      (window as any).dataLayer.push({
+                        event: 'email_click',
+                        email: 'info@illuminious.com'
+                      });
+                    }
+                  }}
                   className={`text-sm transition-colors ${
                     isStartupsPage
                       ? "text-gray-400 hover:text-cyber-cyan"
@@ -192,9 +202,11 @@ export default function Footer() {
                     isStartupsPage ? "text-gray-400" : "text-illuminious-light/70"
                   }`}
                 >
-                  Silicon Valley, CA
+                  <span className="inline-flex items-center gap-1">
+                    <span>🇺🇸</span> Palo Alto, CA
+                  </span>
                   <br />
-                  United States
+                  United States (HQ)
                 </span>
               </li>
             </ul>

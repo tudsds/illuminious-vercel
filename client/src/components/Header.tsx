@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -48,7 +48,38 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  // Pages with dark backgrounds that need white text
+  const isDarkBgPage = location === "/" || location === "/startups";
   const isStartupsPage = location === "/startups";
+  const isHomePage = location === "/";
+
+  // Determine text color based on page and scroll state
+  const getNavTextColor = (isActive: boolean) => {
+    if (isStartupsPage) {
+      return isActive ? "text-cyber-cyan" : "text-gray-300 hover:text-cyber-cyan";
+    }
+    if (isHomePage) {
+      if (isScrolled) {
+        return isActive ? "text-illuminious-blue" : "text-gray-900 hover:text-illuminious-blue hover:bg-illuminious-light/50";
+      }
+      return isActive ? "text-illuminious-blue" : "text-white/90 hover:text-white hover:bg-white/10";
+    }
+    // All other pages - always black text for unselected items
+    return isActive ? "text-illuminious-blue" : "text-gray-900 hover:text-illuminious-blue hover:bg-illuminious-light/50";
+  };
+
+  // Logo text color
+  const getLogoTextColor = () => {
+    if (isStartupsPage) return "text-cyber-cyan";
+    if (isHomePage && !isScrolled) return "text-white";
+    return "text-illuminious-navy";
+  };
+
+  // Logo image - use the new transparent logo
+  const getLogoSrc = () => {
+    // The new logo has transparent background and works on all backgrounds
+    return "/images/illuminious-logo-full.png";
+  };
 
   return (
     <header
@@ -59,7 +90,9 @@ export default function Header() {
             : "bg-white/95 backdrop-blur-md shadow-lg"
           : isStartupsPage
           ? "bg-transparent"
-          : "bg-transparent"
+          : isDarkBgPage
+          ? "bg-transparent"
+          : "bg-white/95 backdrop-blur-md shadow-sm"
       }`}
     >
       <nav className="container mx-auto px-4 lg:px-8">
@@ -67,18 +100,12 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <img
-              src="/images/illuminious-logo-icon.png"
+              src={getLogoSrc()}
               alt="Illuminious"
               className="h-10 w-10"
             />
             <span
-              className={`text-xl font-bold font-heading ${
-                isStartupsPage
-                  ? "text-cyber-cyan"
-                  : isScrolled
-                  ? "text-illuminious-navy"
-                  : "text-white"
-              }`}
+              className={`text-xl font-bold font-heading ${getLogoTextColor()}`}
             >
               illuminious
             </span>
@@ -95,17 +122,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 ${
-                    location === item.href
-                      ? isStartupsPage
-                        ? "text-cyber-cyan"
-                        : "text-illuminious-blue"
-                      : isStartupsPage
-                      ? "text-gray-300 hover:text-cyber-cyan"
-                      : isScrolled
-                      ? "text-illuminious-navy hover:text-illuminious-blue hover:bg-illuminious-light/50"
-                      : "text-white/90 hover:text-white hover:bg-white/10"
-                  }`}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 ${getNavTextColor(location === item.href)}`}
                 >
                   {item.label}
                   {item.children && <ChevronDown className="w-4 h-4" />}
@@ -143,10 +160,38 @@ export default function Header() {
                 </AnimatePresence>
               </div>
             ))}
+            
+            {/* Admin Portal Link */}
+            <Link
+              href="/admin"
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 ${
+                isStartupsPage
+                  ? "text-gray-400 hover:text-cyber-cyan"
+                  : isHomePage && !isScrolled
+                  ? "text-white/70 hover:text-white"
+                  : "text-gray-400 hover:text-illuminious-blue"
+              }`}
+              title="Admin Portal"
+            >
+              <Settings className="w-4 h-4" />
+            </Link>
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/admin"
+              className={`p-2 rounded-lg transition-colors ${
+                isStartupsPage
+                  ? "text-gray-400 hover:text-cyber-cyan hover:bg-cyber-purple/20"
+                  : isHomePage && !isScrolled
+                  ? "text-white/70 hover:text-white hover:bg-white/10"
+                  : "text-gray-500 hover:text-illuminious-blue hover:bg-illuminious-light/50"
+              }`}
+              title="Admin Portal"
+            >
+              <Settings className="w-5 h-5" />
+            </Link>
             <Button
               asChild
               className={`${
@@ -165,9 +210,9 @@ export default function Header() {
             className={`lg:hidden p-2 rounded-lg ${
               isStartupsPage
                 ? "text-cyber-cyan"
-                : isScrolled
-                ? "text-illuminious-navy"
-                : "text-white"
+                : isHomePage && !isScrolled
+                ? "text-white"
+                : "text-illuminious-navy"
             }`}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -222,6 +267,20 @@ export default function Header() {
                     )}
                   </div>
                 ))}
+                {/* Admin Portal in Mobile Menu */}
+                <Link
+                  href="/admin"
+                  className={`block px-4 py-3 text-base font-medium rounded-lg ${
+                    isStartupsPage
+                      ? "text-gray-400 hover:text-cyber-cyan"
+                      : "text-gray-500 hover:text-illuminious-blue hover:bg-illuminious-light/30"
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <Settings className="w-4 h-4" />
+                    Admin Portal
+                  </span>
+                </Link>
                 <div className="px-4 pt-4">
                   <Button
                     asChild

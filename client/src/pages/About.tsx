@@ -19,21 +19,25 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const locations = [
   {
     name: "United States",
-    description: "Headquarters & Customer Success",
+    city: "Palo Alto, CA",
+    description: "Headquarters",
     flag: "🇺🇸",
   },
   {
     name: "Hong Kong",
-    description: "R&D Headquarters",
+    city: "",
+    description: "R&D Center",
     flag: "🇭🇰",
   },
   {
     name: "Indonesia",
-    description: "Manufacturing Hub",
+    city: "",
+    description: "Production Center",
     flag: "🇮🇩",
   },
   {
     name: "China",
+    city: "",
     description: "Production Center",
     flag: "🇨🇳",
   },
@@ -214,7 +218,7 @@ export default function About() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Strategic Locations Worldwide
               </h2>
-              <p className="text-illuminious-light/80 text-lg mb-8 leading-relaxed">
+              <p className="text-white/90 text-lg mb-8 leading-relaxed">
                 Our carefully selected locations provide optimal coverage for
                 manufacturing, logistics, and customer support, ensuring fast
                 turnaround times and competitive costs.
@@ -230,6 +234,7 @@ export default function About() {
                       <span className="text-2xl">{location.flag}</span>
                       <h4 className="font-semibold text-white">{location.name}</h4>
                     </div>
+                    {location.city && <p className="text-xs text-white/70 mb-1">{location.city}</p>}
                     <p className="text-sm text-illuminious-sky">{location.description}</p>
                   </div>
                 ))}

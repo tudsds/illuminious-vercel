@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 import {
   Mail,
   Phone,
@@ -13,18 +14,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { toast } from "sonner";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { trpc } from "@/lib/trpc";
 
 const contactInfo = [
   {
@@ -42,7 +37,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Headquarters",
-    value: "Silicon Valley, CA, USA",
+    value: "Palo Alto, CA, USA",
     href: null,
   },
   {
@@ -56,21 +51,23 @@ const contactInfo = [
 const offices = [
   {
     location: "United States",
-    city: "Silicon Valley, CA",
     type: "Headquarters",
     flag: "🇺🇸",
   },
   {
-    location: "Indonesia",
-    city: "Batam Free Trade Zone",
-    type: "Manufacturing",
-    flag: "🇮🇩",
+    location: "Hong Kong",
+    type: "R&D Center",
+    flag: "🇭🇰",
   },
   {
     location: "China",
-    city: "Shenzhen",
-    type: "R&D Center",
+    type: "Production Center",
     flag: "🇨🇳",
+  },
+  {
+    location: "Indonesia",
+    type: "Production Center",
+    flag: "🇮🇩",
   },
 ];
 
@@ -90,6 +87,7 @@ function AnimatedSection({ children, className = "", delay = 0 }: { children: Re
 }
 
 export default function Contact() {
+  const [, setLocation] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -97,12 +95,10 @@ export default function Contact() {
     email: "",
     phone: "",
     company: "",
-    service: "",
-    projectType: "",
-    budget: "",
-    timeline: "",
     message: "",
   });
+
+  const submitContactMutation = trpc.contact.submit.useMutation();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -113,34 +109,43 @@ export default function Contact() {
     }));
   };
 
-  const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      await submitContactMutation.mutateAsync({
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        company: formData.company || undefined,
+        message: formData.message,
+      });
 
-    toast.success("Thank you for your inquiry! We'll get back to you within 24 hours.");
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      company: "",
-      service: "",
-      projectType: "",
-      budget: "",
-      timeline: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+      // GTM tracking for form submission
+      if (typeof window !== 'undefined' && (window as any).dataLayer) {
+        (window as any).dataLayer.push({
+          event: 'contact_form_submit',
+          form_type: 'contact_page'
+        });
+      }
+
+      // Redirect to thank you page
+      setLocation('/thank-you');
+    } catch (error) {
+      toast.error("Failed to submit. Please try again.");
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleEmailClick = () => {
+    // GTM tracking for email click
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'email_click',
+        email: 'info@illuminious.com'
+      });
+    }
   };
 
   return (
@@ -154,10 +159,10 @@ export default function Contact() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 bg-gradient-to-br from-illuminious-navy via-illuminious-blue to-illuminious-sky overflow-hidden">
+      <section className="relative pt-32 pb-16 bg-illuminious-light overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.3) 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(19, 40, 67, 0.3) 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }} />
         </div>
@@ -168,14 +173,14 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white text-sm font-medium mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-illuminious-navy/10 text-black text-sm font-medium mb-6">
               <MessageSquare className="w-4 h-4" />
               Let's Talk
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#132843' }}>
               Get in Touch
             </h1>
-            <p className="text-xl text-illuminious-light/90">
+            <p className="text-xl text-illuminious-navy/70">
               Ready to start your project? Contact us for a free consultation and
               quote. We typically respond within 24 hours.
             </p>
@@ -184,7 +189,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Form */}
@@ -197,7 +202,7 @@ export default function Contact() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <label className="block text-sm font-medium text-illuminious-navy mb-2">
                           First Name *
                         </label>
                         <Input
@@ -209,7 +214,7 @@ export default function Contact() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <label className="block text-sm font-medium text-illuminious-navy mb-2">
                           Last Name *
                         </label>
                         <Input
@@ -224,7 +229,7 @@ export default function Contact() {
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <label className="block text-sm font-medium text-illuminious-navy mb-2">
                           Email *
                         </label>
                         <Input
@@ -237,7 +242,7 @@ export default function Contact() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
+                        <label className="block text-sm font-medium text-illuminious-navy mb-2">
                           Phone
                         </label>
                         <Input
@@ -251,7 +256,7 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-sm font-medium text-illuminious-navy mb-2">
                         Company Name
                       </label>
                       <Input
@@ -262,98 +267,8 @@ export default function Contact() {
                       />
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Service Interested In
-                        </label>
-                        <Select
-                          value={formData.service}
-                          onValueChange={(value) => handleSelectChange("service", value)}
-                        >
-                          <SelectTrigger className="border-illuminious-light focus:border-illuminious-blue">
-                            <SelectValue placeholder="Select a service" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="dfm">Design for Manufacturing (DFM)</SelectItem>
-                            <SelectItem value="oem">OEM Manufacturing</SelectItem>
-                            <SelectItem value="odm">ODM Manufacturing</SelectItem>
-                            <SelectItem value="ems">Electronics Manufacturing Services</SelectItem>
-                            <SelectItem value="prototyping">Rapid Prototyping</SelectItem>
-                            <SelectItem value="logistics">Logistics & Warehouse</SelectItem>
-                            <SelectItem value="startups">Startups Program</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Project Type
-                        </label>
-                        <Select
-                          value={formData.projectType}
-                          onValueChange={(value) => handleSelectChange("projectType", value)}
-                        >
-                          <SelectTrigger className="border-illuminious-light focus:border-illuminious-blue">
-                            <SelectValue placeholder="Select project type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="consumer-electronics">Consumer Electronics</SelectItem>
-                            <SelectItem value="ai-hardware">AI Hardware / Wearables</SelectItem>
-                            <SelectItem value="iot">IoT Devices</SelectItem>
-                            <SelectItem value="medical">Medical Devices</SelectItem>
-                            <SelectItem value="industrial">Industrial Electronics</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Estimated Budget
-                        </label>
-                        <Select
-                          value={formData.budget}
-                          onValueChange={(value) => handleSelectChange("budget", value)}
-                        >
-                          <SelectTrigger className="border-illuminious-light focus:border-illuminious-blue">
-                            <SelectValue placeholder="Select budget range" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="under-10k">Under $10,000</SelectItem>
-                            <SelectItem value="10k-50k">$10,000 - $50,000</SelectItem>
-                            <SelectItem value="50k-100k">$50,000 - $100,000</SelectItem>
-                            <SelectItem value="100k-500k">$100,000 - $500,000</SelectItem>
-                            <SelectItem value="over-500k">Over $500,000</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Timeline
-                        </label>
-                        <Select
-                          value={formData.timeline}
-                          onValueChange={(value) => handleSelectChange("timeline", value)}
-                        >
-                          <SelectTrigger className="border-illuminious-light focus:border-illuminious-blue">
-                            <SelectValue placeholder="Select timeline" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="asap">ASAP</SelectItem>
-                            <SelectItem value="1-3-months">1-3 Months</SelectItem>
-                            <SelectItem value="3-6-months">3-6 Months</SelectItem>
-                            <SelectItem value="6-12-months">6-12 Months</SelectItem>
-                            <SelectItem value="flexible">Flexible</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
+                      <label className="block text-sm font-medium text-illuminious-navy mb-2">
                         Project Details *
                       </label>
                       <Textarea
@@ -406,6 +321,7 @@ export default function Contact() {
                           {item.href ? (
                             <a
                               href={item.href}
+                              onClick={item.title === "Email" ? handleEmailClick : undefined}
                               className="text-white hover:text-illuminious-sky transition-colors"
                             >
                               {item.value}
@@ -439,8 +355,7 @@ export default function Contact() {
                           <p className="font-medium text-illuminious-navy">
                             {office.location}
                           </p>
-                          <p className="text-sm text-muted-foreground">{office.city}</p>
-                          <p className="text-xs text-illuminious-blue">{office.type}</p>
+                          <p className="text-sm text-illuminious-blue">{office.type}</p>
                         </div>
                       </div>
                     ))}
@@ -449,15 +364,17 @@ export default function Contact() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.3}>
-                <div className="bg-gradient-to-br from-illuminious-blue to-illuminious-sky rounded-2xl p-6 text-white">
-                  <h3 className="text-xl font-semibold mb-3">Quick Response</h3>
-                  <p className="text-white/80 text-sm mb-4">
-                    Need an urgent response? Email us directly and we'll get back
-                    to you within a few hours during business hours.
+                <div className="bg-illuminious-light/50 rounded-2xl p-6">
+                  <h3 className="text-lg font-semibold text-illuminious-navy mb-3">
+                    Prefer Email?
+                  </h3>
+                  <p className="text-sm text-illuminious-navy/70 mb-4">
+                    Send us a direct email and we'll get back to you within 24 hours.
                   </p>
                   <a
                     href="mailto:info@illuminious.com"
-                    className="inline-flex items-center gap-2 text-white font-medium hover:underline"
+                    onClick={handleEmailClick}
+                    className="inline-flex items-center gap-2 text-illuminious-blue hover:text-illuminious-navy transition-colors font-medium"
                   >
                     <Mail className="w-4 h-4" />
                     info@illuminious.com
