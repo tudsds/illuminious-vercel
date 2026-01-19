@@ -159,7 +159,7 @@ export default function Contact() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 bg-illuminious-light overflow-hidden">
+      <section className="relative pt-32 pb-16 bg-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(19, 40, 67, 0.3) 1px, transparent 0)`,

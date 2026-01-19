@@ -15,6 +15,13 @@
       "when": 1768805888304,
       "tag": "0001_yellow_ken_ellis",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1768818823299,
+      "tag": "0002_awesome_lightspeed",
+      "breakpoints": true
     }
   ]
 }

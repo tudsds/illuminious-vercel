@@ -36,6 +36,11 @@ export const admins = mysqlTable("admins", {
   name: text("name"),
   email: varchar("email", { length: 320 }),
   isSuperAdmin: boolean("isSuperAdmin").default(false).notNull(),
+  // First login setup - email binding required
+  emailVerified: boolean("emailVerified").default(false).notNull(),
+  // Password reset token
+  resetToken: varchar("resetToken", { length: 256 }),
+  resetTokenExpiry: timestamp("resetTokenExpiry"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn"),
@@ -46,18 +51,25 @@ export type InsertAdmin = typeof admins.$inferInsert;
 
 /**
  * Posts table for News and Blog content
+ * Supports rich content with images, videos, and links
  */
 export const posts = mysqlTable("posts", {
   id: int("id").autoincrement().primaryKey(),
   title: varchar("title", { length: 500 }).notNull(),
   slug: varchar("slug", { length: 500 }).notNull().unique(),
+  // Rich content stored as HTML from the editor
   content: text("content").notNull(),
   excerpt: text("excerpt"),
   featuredImage: varchar("featuredImage", { length: 1000 }),
   type: mysqlEnum("type", ["news", "blog"]).notNull(),
+  // Tags stored as JSON array
+  tags: json("tags").$type<string[]>(),
+  category: varchar("category", { length: 100 }),
   status: mysqlEnum("status", ["draft", "published"]).default("draft").notNull(),
   authorName: varchar("authorName", { length: 200 }),
   authorId: int("authorId"),
+  // Read time in minutes (calculated)
+  readTime: int("readTime"),
   publishedAt: timestamp("publishedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
@@ -67,7 +79,7 @@ export type Post = typeof posts.$inferSelect;
 export type InsertPost = typeof posts.$inferInsert;
 
 /**
- * Contact form submissions
+ * Contact form submissions / Inquiries
  */
 export const contactSubmissions = mysqlTable("contact_submissions", {
   id: int("id").autoincrement().primaryKey(),
@@ -78,6 +90,10 @@ export const contactSubmissions = mysqlTable("contact_submissions", {
   message: text("message").notNull(),
   source: varchar("source", { length: 100 }), // which page the form was submitted from
   status: mysqlEnum("status", ["new", "read", "replied", "archived"]).default("new").notNull(),
+  // Admin notes for internal use
+  adminNotes: text("adminNotes"),
+  // Who handled this inquiry
+  handledBy: int("handledBy"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

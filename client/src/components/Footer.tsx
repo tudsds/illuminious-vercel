@@ -40,7 +40,7 @@ export default function Footer() {
               <img
                 src="/images/illuminious-logo-full.png"
                 alt="Illuminious"
-                className="h-10 w-10 brightness-0 invert"
+                className="h-10 w-10"
               />
               <span
                 className={`text-xl font-bold font-heading ${
@@ -50,11 +50,7 @@ export default function Footer() {
                 illuminious
               </span>
             </Link>
-            <p
-              className={`text-sm leading-relaxed mb-6 ${
-                isStartupsPage ? "text-gray-400" : "text-illuminious-light/80"
-              }`}
-            >
+            <p className="text-sm leading-relaxed mb-6 text-white">
               Your trusted global electronics supply chain partner. From concept to
               delivery, we bridge the gap between innovation and manufacturing
               excellence.
@@ -66,8 +62,8 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className={`p-2 rounded-full transition-colors ${
                   isStartupsPage
-                    ? "bg-cyber-purple/20 text-cyber-cyan hover:bg-cyber-purple/40"
-                    : "bg-illuminious-blue/20 text-illuminious-light hover:bg-illuminious-blue/40"
+                    ? "bg-cyber-purple/20 text-white hover:bg-cyber-purple/40"
+                    : "bg-illuminious-blue/20 text-white hover:bg-illuminious-blue/40"
                 }`}
               >
                 <Linkedin className="w-5 h-5" />
@@ -78,8 +74,8 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className={`p-2 rounded-full transition-colors ${
                   isStartupsPage
-                    ? "bg-cyber-purple/20 text-cyber-cyan hover:bg-cyber-purple/40"
-                    : "bg-illuminious-blue/20 text-illuminious-light hover:bg-illuminious-blue/40"
+                    ? "bg-cyber-purple/20 text-white hover:bg-cyber-purple/40"
+                    : "bg-illuminious-blue/20 text-white hover:bg-illuminious-blue/40"
                 }`}
               >
                 <Twitter className="w-5 h-5" />
@@ -89,11 +85,7 @@ export default function Footer() {
 
           {/* Services Column */}
           <div>
-            <h3
-              className={`text-lg font-semibold mb-6 ${
-                isStartupsPage ? "text-cyber-cyan" : "text-white"
-              }`}
-            >
+            <h3 className="text-lg font-semibold mb-6 text-white">
               Our Services
             </h3>
             <ul className="space-y-3">
@@ -101,11 +93,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className={`text-sm transition-colors ${
-                      isStartupsPage
-                        ? "text-gray-400 hover:text-cyber-cyan"
-                        : "text-illuminious-light/70 hover:text-white"
-                    }`}
+                    className="text-sm text-white hover:text-white/80 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -116,11 +104,7 @@ export default function Footer() {
 
           {/* Company Column */}
           <div>
-            <h3
-              className={`text-lg font-semibold mb-6 ${
-                isStartupsPage ? "text-cyber-cyan" : "text-white"
-              }`}
-            >
+            <h3 className="text-lg font-semibold mb-6 text-white">
               Company
             </h3>
             <ul className="space-y-3">
@@ -128,11 +112,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className={`text-sm transition-colors ${
-                      isStartupsPage
-                        ? "text-gray-400 hover:text-cyber-cyan"
-                        : "text-illuminious-light/70 hover:text-white"
-                    }`}
+                    className="text-sm text-white hover:text-white/80 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -143,20 +123,12 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h3
-              className={`text-lg font-semibold mb-6 ${
-                isStartupsPage ? "text-cyber-cyan" : "text-white"
-              }`}
-            >
+            <h3 className="text-lg font-semibold mb-6 text-white">
               Contact Us
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail
-                  className={`w-5 h-5 mt-0.5 ${
-                    isStartupsPage ? "text-cyber-cyan" : "text-illuminious-sky"
-                  }`}
-                />
+                <Mail className="w-5 h-5 mt-0.5 text-white" />
                 <a
                   href="mailto:info@illuminious.com"
                   onClick={() => {
@@ -168,40 +140,20 @@ export default function Footer() {
                       });
                     }
                   }}
-                  className={`text-sm transition-colors ${
-                    isStartupsPage
-                      ? "text-gray-400 hover:text-cyber-cyan"
-                      : "text-illuminious-light/70 hover:text-white"
-                  }`}
+                  className="text-sm text-white hover:text-white/80 transition-colors"
                 >
                   info@illuminious.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone
-                  className={`w-5 h-5 mt-0.5 ${
-                    isStartupsPage ? "text-cyber-cyan" : "text-illuminious-sky"
-                  }`}
-                />
-                <span
-                  className={`text-sm ${
-                    isStartupsPage ? "text-gray-400" : "text-illuminious-light/70"
-                  }`}
-                >
+                <Phone className="w-5 h-5 mt-0.5 text-white" />
+                <span className="text-sm text-white">
                   +1 (555) 123-4567
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin
-                  className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                    isStartupsPage ? "text-cyber-cyan" : "text-illuminious-sky"
-                  }`}
-                />
-                <span
-                  className={`text-sm ${
-                    isStartupsPage ? "text-gray-400" : "text-illuminious-light/70"
-                  }`}
-                >
+                <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 text-white" />
+                <span className="text-sm text-white">
                   <span className="inline-flex items-center gap-1">
                     <span>🇺🇸</span> Palo Alto, CA
                   </span>
@@ -220,31 +172,19 @@ export default function Footer() {
           }`}
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p
-              className={`text-sm ${
-                isStartupsPage ? "text-gray-500" : "text-illuminious-light/50"
-              }`}
-            >
+            <p className="text-sm text-white">
               © {new Date().getFullYear()} Illuminious LLC. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link
                 href="/privacy"
-                className={`text-sm transition-colors ${
-                  isStartupsPage
-                    ? "text-gray-500 hover:text-cyber-cyan"
-                    : "text-illuminious-light/50 hover:text-white"
-                }`}
+                className="text-sm text-white hover:text-white/80 transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className={`text-sm transition-colors ${
-                  isStartupsPage
-                    ? "text-gray-500 hover:text-cyber-cyan"
-                    : "text-illuminious-light/50 hover:text-white"
-                }`}
+                className="text-sm text-white hover:text-white/80 transition-colors"
               >
                 Terms of Service
               </Link>

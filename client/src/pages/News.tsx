@@ -1,23 +1,24 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight, Clock } from "lucide-react";
+import { Calendar, ArrowRight, Clock, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import SEO from "@/components/SEO";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { trpc } from "@/lib/trpc";
 
-// Sample news data - in production this would come from the database
-const newsItems = [
+// Fallback sample news data for when database is empty
+const fallbackNewsItems = [
   {
     id: 1,
     slug: "illuminious-expands-manufacturing-capacity",
     title: "Illuminious Expands Manufacturing Capacity in Southeast Asia",
     excerpt: "We are excited to announce a significant expansion of our manufacturing capabilities in the Batam Free Trade Zone, Indonesia.",
-    date: "2026-01-15",
-    readTime: "3 min read",
-    image: "/images/about-factory-equipment.png",
+    publishedAt: new Date("2026-01-15"),
+    readTime: 3,
+    featuredImage: "/images/about-factory-equipment.png",
     category: "Company News",
   },
   {
@@ -25,9 +26,9 @@ const newsItems = [
     slug: "partnership-with-future-factory",
     title: "Strategic Partnership with Future Factory Announced",
     excerpt: "Illuminious partners with Future Factory to enhance AI hardware manufacturing capabilities and startup support services.",
-    date: "2026-01-10",
-    readTime: "4 min read",
-    image: "/images/about-global-network.png",
+    publishedAt: new Date("2026-01-10"),
+    readTime: 4,
+    featuredImage: "/images/about-global-network.png",
     category: "Partnership",
   },
   {
@@ -35,9 +36,9 @@ const newsItems = [
     slug: "new-us-warehouse-facility",
     title: "New US Warehouse Facility Now Operational",
     excerpt: "Our new state-of-the-art fulfillment center is now fully operational, enabling faster delivery times for North American customers.",
-    date: "2026-01-05",
-    readTime: "2 min read",
-    image: "/images/about-overseas-warehouse.png",
+    publishedAt: new Date("2026-01-05"),
+    readTime: 2,
+    featuredImage: "/images/about-overseas-warehouse.png",
     category: "Operations",
   },
 ];
@@ -58,6 +59,23 @@ function AnimatedSection({ children, className = "", delay = 0 }: { children: Re
 }
 
 export default function News() {
+  const { data: dbPosts, isLoading } = trpc.posts.list.useQuery({
+    type: "news",
+    publishedOnly: true,
+  });
+
+  // Use database posts if available, otherwise use fallback
+  const newsItems = dbPosts && dbPosts.length > 0 ? dbPosts.map(post => ({
+    id: post.id,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt || post.content.substring(0, 150) + "...",
+    publishedAt: post.publishedAt || post.createdAt,
+    readTime: post.readTime || Math.ceil(post.content.length / 1000),
+    featuredImage: post.featuredImage || "/images/about-factory-equipment.png",
+    category: post.category || "Company News",
+  })) : fallbackNewsItems;
+
   return (
     <>
       <SEO
@@ -69,7 +87,7 @@ export default function News() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 bg-illuminious-light overflow-hidden">
+      <section className="relative pt-32 pb-16 bg-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.3) 1px, transparent 0)`,
@@ -83,7 +101,7 @@ export default function News() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ color: '#132843' }}>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#132843' }}>
               News & Updates
             </h1>
             <p className="text-xl text-illuminious-navy/70">
@@ -96,55 +114,56 @@ export default function News() {
       {/* News Grid */}
       <section className="py-20">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsItems.map((item, index) => (
-              <AnimatedSection key={item.id} delay={index * 0.1}>
-                <Link href={`/news/${item.slug}`}>
-                  <article className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-illuminious-light hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                    <div className="aspect-video overflow-hidden">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-6 flex flex-col flex-1">
-                      <span className="text-xs font-medium text-illuminious-blue bg-illuminious-light/50 px-3 py-1 rounded-full w-fit mb-3">
-                        {item.category}
-                      </span>
-                      <h2 className="text-xl font-semibold text-illuminious-navy mb-3 group-hover:text-illuminious-blue transition-colors line-clamp-2">
-                        {item.title}
-                      </h2>
-                      <p className="text-muted-foreground mb-4 line-clamp-2 flex-1">
-                        {item.excerpt}
-                      </p>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {item.readTime}
-                        </span>
+          {isLoading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-8 h-8 animate-spin text-illuminious-blue" />
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {newsItems.map((item, index) => (
+                <AnimatedSection key={item.id} delay={index * 0.1}>
+                  <Link href={`/news/${item.slug}`}>
+                    <article className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-illuminious-light hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                      <div className="aspect-video overflow-hidden">
+                        <img
+                          src={item.featuredImage}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       </div>
-                    </div>
-                  </article>
-                </Link>
-              </AnimatedSection>
-            ))}
-          </div>
+                      <div className="p-6 flex flex-col flex-1">
+                        <span className="text-xs font-medium text-illuminious-blue bg-illuminious-light/50 px-3 py-1 rounded-full w-fit mb-3">
+                          {item.category}
+                        </span>
+                        <h2 className="text-xl font-semibold text-illuminious-navy mb-3 group-hover:text-illuminious-blue transition-colors line-clamp-2">
+                          {item.title}
+                        </h2>
+                        <p className="text-muted-foreground mb-4 line-clamp-2 flex-1">
+                          {item.excerpt}
+                        </p>
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            {new Date(item.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-4 h-4" />
+                            {item.readTime} min read
+                          </span>
+                        </div>
+                      </div>
+                    </article>
+                  </Link>
+                </AnimatedSection>
+              ))}
+            </div>
+          )}
 
-          {/* Load More */}
-          <AnimatedSection className="text-center mt-12">
-            <Button
-              variant="outline"
-              className="border-illuminious-blue text-illuminious-blue hover:bg-illuminious-light rounded-full px-8"
-            >
-              Load More News
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </AnimatedSection>
+          {newsItems.length === 0 && !isLoading && (
+            <div className="text-center py-20 text-muted-foreground">
+              No news articles available at the moment.
+            </div>
+          )}
         </div>
       </section>
 
@@ -158,13 +177,13 @@ export default function News() {
             <p className="text-muted-foreground mb-6">
               Get the latest news and insights delivered directly to your inbox.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <div className="flex gap-3 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-full border border-illuminious-light focus:border-illuminious-blue focus:outline-none"
+                className="flex-1 px-4 py-3 rounded-full border border-illuminious-light focus:outline-none focus:ring-2 focus:ring-illuminious-blue"
               />
-              <Button className="bg-illuminious-blue text-white hover:bg-illuminious-navy rounded-full px-6">
+              <Button className="bg-illuminious-blue hover:bg-illuminious-navy rounded-full px-6">
                 Subscribe
               </Button>
             </div>

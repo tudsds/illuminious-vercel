@@ -160,21 +160,7 @@ export default function Header() {
                 </AnimatePresence>
               </div>
             ))}
-            
-            {/* Admin Portal Link */}
-            <Link
-              href="/admin"
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 ${
-                isStartupsPage
-                  ? "text-gray-400 hover:text-cyber-cyan"
-                  : isHomePage && !isScrolled
-                  ? "text-white/70 hover:text-white"
-                  : "text-gray-400 hover:text-illuminious-blue"
-              }`}
-              title="Admin Portal"
-            >
-              <Settings className="w-4 h-4" />
-            </Link>
+
           </div>
 
           {/* CTA Button */}

@@ -186,3 +186,37 @@
 
 ### GA4 and Meta Pixel Configuration
 - [x] Prepare Chinese instructions for GTM configuration (docs/GTM-Analytics-Setup-Guide-CN.md)
+
+## Phase 15: Major Updates (Jan 19, 2026)
+
+### UI Fixes
+- [x] Replace /images/illuminious-logo-full.png with new uploaded logo
+- [x] Change all Footer text to white color
+- [x] Change specific titles to #132843 color (Bridging Innovation, End-to-End Manufacturing, DFM, OEM, ODM, EMS, PCBA, IC Packaging, Product Assembly, Rapid Prototyping, Quality Testing, Logistics)
+- [x] Change News/Blog/Contact page header backgrounds to white
+- [x] Remove duplicate gear icon in header (keep only one)
+
+### Admin Portal - Inquiry Management
+- [x] Create inquiries table in database (contact_submissions table)
+- [x] Build inquiry list view in admin portal
+- [x] Display all Contact Us form submissions
+- [x] Add inquiry status management (new, read, replied)
+
+### Admin Portal - Blog/News CMS
+- [x] Create posts table with type (blog/news), tags, content fields
+- [x] Build rich text editor with image, video, link support
+- [x] Create post list view with edit/delete actions
+- [x] Create new post form with type selection and tag input
+- [x] Ensure published posts display correctly on News/Blog pages
+
+### Admin Portal - Email & Password System
+- [x] Add email and password fields to admins table (emailVerified, resetToken, resetTokenExpiry)
+- [ ] Create first-login email binding flow (requires email service integration)
+- [ ] Implement password reset via email (requires email service integration)
+- [x] Add change password functionality (via Super Admin)
+
+### Admin Portal - Super Admin Features
+- [x] Add role field (isSuperAdmin) to admins table
+- [x] Create admin management interface for super admin
+- [x] Add/remove admin functionality
+- [x] Display admin accounts (passwords are hashed for security)

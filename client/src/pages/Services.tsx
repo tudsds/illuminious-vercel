@@ -175,7 +175,7 @@ export default function Services() {
                       <div className="w-12 h-12 rounded-xl bg-illuminious-light flex items-center justify-center">
                         <service.icon className="w-6 h-6 text-illuminious-blue" />
                       </div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-illuminious-navy">
+                      <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#132843' }}>
                         {service.title}
                       </h2>
                     </div>
