@@ -265,10 +265,10 @@ export default function Startups() {
       <section className="py-20 md:py-32 bg-gradient-to-b from-cyber-black to-cyber-purple/20">
         <div className="container">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Your <span className="text-cyber-pink">Journey</span> With Us
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1a1a2e' }}>
+              Your <span className="text-cyber-purple">Journey</span> With Us
             </h2>
-            <p className="text-lg text-gray-400">
+            <p className="text-lg" style={{ color: '#2d2d44' }}>
               From initial concept to global scale, we're with you every step of the way.
             </p>
           </AnimatedSection>
@@ -290,10 +290,10 @@ export default function Startups() {
                       <span className="md:hidden text-cyber-cyan font-bold text-sm mb-2 block">
                         Phase {step.phase}
                       </span>
-                      <h3 className="text-xl font-semibold text-white mb-2">
+                      <h3 className="text-xl font-semibold mb-2" style={{ color: '#1a1a2e' }}>
                         {step.title}
                       </h3>
-                      <p className="text-gray-400">{step.description}</p>
+                      <p style={{ color: '#3d3d5c' }}>{step.description}</p>
                     </div>
                   </div>
                 </AnimatedSection>
@@ -367,8 +367,8 @@ export default function Startups() {
       <section className="py-20 bg-gradient-to-b from-cyber-black to-cyber-purple/10">
         <div className="container">
           <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Trusted by <span className="text-cyber-cyan">Innovators</span>
+            <h2 className="text-3xl font-bold mb-4" style={{ color: '#1a1a2e' }}>
+              Trusted by <span className="text-cyber-purple">Innovators</span>
             </h2>
           </AnimatedSection>
 
@@ -376,12 +376,12 @@ export default function Startups() {
             {testimonials.map((testimonial, index) => (
               <AnimatedSection key={index} delay={index * 0.1}>
                 <div className="p-6 rounded-2xl bg-cyber-black/50 border border-cyber-purple/30">
-                  <p className="text-gray-300 text-lg mb-6 italic">
+                  <p className="text-lg mb-6 italic" style={{ color: '#2d2d44' }}>
                     "{testimonial.quote}"
                   </p>
                   <div>
-                    <p className="text-white font-semibold">{testimonial.author}</p>
-                    <p className="text-cyber-cyan text-sm">{testimonial.role}</p>
+                    <p className="font-semibold" style={{ color: '#1a1a2e' }}>{testimonial.author}</p>
+                    <p className="text-cyber-purple text-sm">{testimonial.role}</p>
                   </div>
                 </div>
               </AnimatedSection>
