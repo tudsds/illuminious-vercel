@@ -77,8 +77,16 @@ export default function Header() {
 
   // Logo image - use the new transparent logo
   const getLogoSrc = () => {
-    // Always use white logo
-    return "/images/illuminious-logo-white.png";
+    // Startups page: always white logo
+    if (isStartupsPage) {
+      return "/images/illuminious-logo-white.png";
+    }
+    // Home page: white logo when not scrolled, blue logo when scrolled
+    if (isHomePage) {
+      return isScrolled ? "/images/illuminious-logo-blue.png" : "/images/illuminious-logo-white.png";
+    }
+    // All other pages: blue logo
+    return "/images/illuminious-logo-blue.png";
   };
 
   return (
