@@ -256,7 +256,7 @@ export default function Services() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Get Started?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white/90 mb-8">
               Contact us today for a free consultation and quote. Our team is
               ready to help bring your product to life.
             </p>
