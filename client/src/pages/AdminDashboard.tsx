@@ -91,30 +91,23 @@ export default function AdminDashboard() {
   const [editingItem, setEditingItem] = useState<ContentItem | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  // Check admin authentication using custom admin system
-  const { data: admin, isLoading: adminLoading } = trpc.admin.me.useQuery();
-  const adminLogoutMutation = trpc.admin.logout.useMutation();
+  // TEMPORARILY DISABLED: Login verification for testing
+  // const { data: admin, isLoading: adminLoading } = trpc.admin.me.useQuery();
+  // const adminLogoutMutation = trpc.admin.logout.useMutation();
+  // useEffect(() => {
+  //   if (!adminLoading && !admin) {
+  //     window.location.href = "/admin/login";
+  //   }
+  // }, [adminLoading, admin]);
+  // if (adminLoading) { return loading... }
+  // if (!admin) { return null; }
 
-  useEffect(() => {
-    if (!adminLoading && !admin) {
-      window.location.href = "/admin/login";
-    }
-  }, [adminLoading, admin]);
-
-  if (adminLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-illuminious-light">
-        <Loader2 className="w-12 h-12 animate-spin text-illuminious-blue" />
-      </div>
-    );
-  }
-
-  if (!admin) {
-    return null;
-  }
+  // Mock super admin for testing
+  const admin = { id: 1, username: "illuminious", name: "Super Admin" };
 
   const handleLogout = async () => {
-    await adminLogoutMutation.mutateAsync();
+    // TEMPORARILY DISABLED: Logout mutation for testing
+    // await adminLogoutMutation.mutateAsync();
     window.location.href = "/";
   };
 
