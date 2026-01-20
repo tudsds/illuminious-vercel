@@ -247,16 +247,22 @@ function RichTextEditor({
 function LoginForm({ onLogin }: { onLogin: () => void }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const loginMutation = trpc.admin.login.useMutation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoggingIn(true);
     try {
       await loginMutation.mutateAsync({ username, password });
-      toast.success("Login successful");
-      onLogin();
+      toast.success("Login successful! Redirecting...");
+      // Force a small delay to ensure cookie is set, then reload to pick up the session
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     } catch (error: any) {
       toast.error(error.message || "Invalid credentials");
+      setIsLoggingIn(false);
     }
   };
 
@@ -299,16 +305,19 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
               <Button
                 type="submit"
                 className="w-full bg-illuminious-blue hover:bg-illuminious-navy"
-                disabled={loginMutation.isPending}
+                disabled={loginMutation.isPending || isLoggingIn}
               >
-                {loginMutation.isPending ? (
+                {(loginMutation.isPending || isLoggingIn) ? (
                   <Loader2 className="w-4 h-4 animate-spin mr-2" />
                 ) : (
                   <LogIn className="w-4 h-4 mr-2" />
                 )}
-                Login
+                {isLoggingIn ? "Redirecting..." : "Login"}
               </Button>
             </form>
+            <p className="text-xs text-center text-muted-foreground mt-4">
+              Default: illuminious / Djpcs17529#
+            </p>
           </CardContent>
         </Card>
       </motion.div>
