@@ -28,6 +28,7 @@ import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminPostEditor from "./pages/AdminPostEditor";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -60,6 +61,8 @@ function Router() {
       <Route path="/admin" component={AdminLogin} />
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin/dashboard" component={AdminDashboard} />
+      <Route path="/admin/posts/new" component={AdminPostEditor} />
+      <Route path="/admin/posts/:id" component={AdminPostEditor} />
       
       {/* 404 */}
       <Route path="/404" component={NotFound} />
