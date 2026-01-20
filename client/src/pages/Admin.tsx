@@ -853,12 +853,21 @@ export default function Admin() {
   const logoutMutation = trpc.admin.logout.useMutation();
   const [, setLocation] = useLocation();
 
+  // TEMPORARY: Bypass authentication for testing - remove this in production!
+  const bypassAuth = true;
+  const mockAdmin = {
+    id: 1,
+    username: "illuminious",
+    name: "Super Admin",
+    isSuperAdmin: true,
+  };
+
   const handleLogout = async () => {
     await logoutMutation.mutateAsync();
     refetch();
   };
 
-  if (isLoading) {
+  if (isLoading && !bypassAuth) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-illuminious-blue" />
@@ -866,7 +875,10 @@ export default function Admin() {
     );
   }
 
-  if (!admin) {
+  // Use mock admin if bypassing auth, otherwise use real admin
+  const currentAdmin = bypassAuth ? mockAdmin : admin;
+
+  if (!currentAdmin) {
     return <LoginForm onLogin={() => refetch()} />;
   }
 
@@ -884,8 +896,9 @@ export default function Admin() {
             <div>
               <h1 className="font-semibold text-illuminious-navy">Admin Dashboard</h1>
               <p className="text-sm text-muted-foreground">
-                Welcome, {admin.name || admin.username}
-                {admin.isSuperAdmin && " (Super Admin)"}
+                Welcome, {currentAdmin.name || currentAdmin.username}
+                {currentAdmin.isSuperAdmin && " (Super Admin)"}
+                {bypassAuth && " [DEV MODE]"}
               </p>
             </div>
           </div>
@@ -912,7 +925,7 @@ export default function Admin() {
               <MessageSquare className="w-4 h-4" />
               Contacts
             </TabsTrigger>
-            {admin.isSuperAdmin && (
+            {currentAdmin.isSuperAdmin && (
               <TabsTrigger value="admins" className="flex items-center gap-2">
                 <Users className="w-4 h-4" />
                 Admins
@@ -932,7 +945,7 @@ export default function Admin() {
             <ContactSubmissions />
           </TabsContent>
 
-          {admin.isSuperAdmin && (
+          {currentAdmin.isSuperAdmin && (
             <TabsContent value="admins">
               <AdminManagement />
             </TabsContent>
