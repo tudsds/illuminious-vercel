@@ -316,3 +316,16 @@
 - [x] 更新App.tsx路由配置
 - [x] 登录成功后使用window.location.href跳转到/admin/dashboard
 - [x] 登出后使用window.location.href跳转到首页
+
+## Phase 21: Admin Dashboard功能修复 (Jan 20, 2026)
+
+### 文章同步问题
+- [x] 修复Dashboard使用数据库存储文章 - 使用trpc.posts.list/create/update/delete
+- [x] 确保发布的文章在News/Blog页面实时显示 - 使用refetchPosts()刷新
+
+### UI尺寸问题
+- [x] 增大登录页面尺寸 - max-w-xl, 更大的输入框和按钮
+- [x] 增大Dashboard编辑器尺寸 - max-w-5xl弹窗, 15行内容区域, 全宽布局
+
+### 图片上传问题
+- [x] 修复图片上传功能 - 支持文件上传和URL两种方式, 带实时预览
