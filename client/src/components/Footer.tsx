@@ -2,10 +2,10 @@ import { Link, useLocation } from "wouter";
 import { Mail, MapPin, Phone, Linkedin, Twitter, Globe } from "lucide-react";
 
 const globalOffices = [
-  { location: "United States", type: "Headquarters", flag: "🇺🇸" },
-  { location: "Hong Kong", type: "R&D Center", flag: "🇭🇰" },
-  { location: "China", type: "Production Center", flag: "🇨🇳" },
-  { location: "Indonesia", type: "Production Center", flag: "🇮🇩" },
+  { location: "United States", city: "Palo Alto, CA", type: "Headquarters", flag: "🇺🇸" },
+  { location: "Hong Kong", city: "Hong Kong SAR", type: "R&D Center", flag: "🇭🇰" },
+  { location: "China", city: "Shenzhen, GD", type: "Production Center", flag: "🇨🇳" },
+  { location: "Indonesia", city: "Batam Island FTZ", type: "Production Center", flag: "🇮🇩" },
 ];
 
 const footerLinks = {
@@ -137,10 +137,11 @@ export default function Footer() {
             <ul className="space-y-3">
               {globalOffices.map((office) => (
                 <li key={office.location} className="flex items-center gap-2">
-                  <span className="text-lg">{office.flag}</span>
+                  <span className="text-lg text-white">{office.flag}</span>
                   <div>
                     <p className="text-sm text-white">{office.location}</p>
-                    <p className={`text-xs ${isStartupsPage ? "text-cyber-cyan/70" : "text-illuminious-sky/70"}`}>
+                    <p className="text-xs text-white/70">{office.city}</p>
+                    <p className={`text-xs ${isStartupsPage ? "text-cyber-cyan/70" : "text-white/60"}`}>
                       {office.type}
                     </p>
                   </div>

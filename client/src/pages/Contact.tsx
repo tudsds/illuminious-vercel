@@ -51,21 +51,25 @@ const contactInfo = [
 const offices = [
   {
     location: "United States",
+    city: "Palo Alto, CA",
     type: "Headquarters",
     flag: "🇺🇸",
   },
   {
     location: "Hong Kong",
+    city: "Hong Kong SAR",
     type: "R&D Center",
     flag: "🇭🇰",
   },
   {
     location: "China",
+    city: "Shenzhen, GD",
     type: "Production Center",
     flag: "🇨🇳",
   },
   {
     location: "Indonesia",
+    city: "Batam Island FTZ",
     type: "Production Center",
     flag: "🇮🇩",
   },
@@ -350,11 +354,12 @@ export default function Contact() {
                         key={office.location}
                         className="flex items-start gap-3 p-3 rounded-lg bg-illuminious-light/30"
                       >
-                        <span className="text-2xl">{office.flag}</span>
+                        <span className="text-2xl text-illuminious-navy">{office.flag}</span>
                         <div>
                           <p className="font-medium text-illuminious-navy">
                             {office.location}
                           </p>
+                          <p className="text-xs text-illuminious-navy/70">{office.city}</p>
                           <p className="text-sm text-illuminious-blue">{office.type}</p>
                         </div>
                       </div>

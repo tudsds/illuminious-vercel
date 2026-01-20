@@ -25,19 +25,19 @@ const locations = [
   },
   {
     name: "Hong Kong",
-    city: "",
+    city: "Hong Kong SAR",
     description: "R&D Center",
     flag: "🇭🇰",
   },
   {
     name: "Indonesia",
-    city: "",
+    city: "Batam Island FTZ",
     description: "Production Center",
     flag: "🇮🇩",
   },
   {
     name: "China",
-    city: "",
+    city: "Shenzhen, GD",
     description: "Production Center",
     flag: "🇨🇳",
   },
@@ -231,10 +231,10 @@ export default function About() {
                     className="bg-illuminious-blue/20 rounded-xl p-4 border border-illuminious-blue/30"
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-2xl">{location.flag}</span>
+                      <span className="text-2xl text-white">{location.flag}</span>
                       <h4 className="font-semibold text-white">{location.name}</h4>
                     </div>
-                    {location.city && <p className="text-xs text-white/70 mb-1">{location.city}</p>}
+                    <p className="text-sm text-white/70 mb-1">{location.city}</p>
                     <p className="text-sm text-illuminious-sky">{location.description}</p>
                   </div>
                 ))}
