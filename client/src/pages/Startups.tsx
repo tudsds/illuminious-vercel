@@ -165,7 +165,7 @@ export default function Startups() {
             >
               <span className="text-white">Illuminious</span>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink">
+              <span className="text-white">
                 Startups Program
               </span>
             </motion.h1>
