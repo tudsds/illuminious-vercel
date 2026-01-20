@@ -1,5 +1,12 @@
 import { Link, useLocation } from "wouter";
-import { Mail, MapPin, Phone, Linkedin, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Twitter, Globe } from "lucide-react";
+
+const globalOffices = [
+  { location: "United States", type: "Headquarters", flag: "🇺🇸" },
+  { location: "Hong Kong", type: "R&D Center", flag: "🇭🇰" },
+  { location: "China", type: "Production Center", flag: "🇨🇳" },
+  { location: "Indonesia", type: "Production Center", flag: "🇮🇩" },
+];
 
 const footerLinks = {
   services: [
@@ -33,7 +40,7 @@ export default function Footer() {
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
@@ -116,6 +123,27 @@ export default function Footer() {
                   >
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Global Offices Column */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 text-white flex items-center gap-2">
+              <Globe className="w-4 h-4" />
+              Global Offices
+            </h3>
+            <ul className="space-y-3">
+              {globalOffices.map((office) => (
+                <li key={office.location} className="flex items-center gap-2">
+                  <span className="text-lg">{office.flag}</span>
+                  <div>
+                    <p className="text-sm text-white">{office.location}</p>
+                    <p className={`text-xs ${isStartupsPage ? "text-cyber-cyan/70" : "text-illuminious-sky/70"}`}>
+                      {office.type}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>
