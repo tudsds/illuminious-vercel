@@ -1,87 +1,108 @@
-import { useEffect } from "react";
-import { useLocation } from "wouter";
-import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
-import { Loader2, Lock } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { LogIn, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 export default function AdminLogin() {
-  const { user, loading, isAuthenticated } = useAuth();
-  const [, setLocation] = useLocation();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  
+  const loginMutation = trpc.admin.login.useMutation();
+  const { data: admin, isLoading } = trpc.admin.me.useQuery();
 
-  useEffect(() => {
-    if (!loading && isAuthenticated && user?.role === "admin") {
-      setLocation("/admin");
-    }
-  }, [loading, isAuthenticated, user, setLocation]);
-
-  if (loading) {
+  // If already logged in, redirect to dashboard
+  if (!isLoading && admin) {
+    window.location.href = '/admin/dashboard';
     return (
-      <div className="min-h-screen flex items-center justify-center bg-illuminious-light">
-        <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-illuminious-blue mx-auto mb-4" />
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-illuminious-navy to-illuminious-blue">
+        <Loader2 className="w-8 h-8 animate-spin text-white" />
       </div>
     );
   }
 
-  if (isAuthenticated && user?.role !== "admin") {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await loginMutation.mutateAsync({ username, password });
+      setIsLoggingIn(true);
+      toast.success("Login successful! Redirecting...");
+      // Use hard redirect to ensure cookie is properly set
+      setTimeout(() => {
+        window.location.href = '/admin/dashboard';
+      }, 500);
+    } catch (error: any) {
+      toast.error(error.message || "Login failed");
+    }
+  };
+
+  if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-illuminious-light">
-        <div className="text-center max-w-md mx-auto p-8">
-          <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-6">
-            <Lock className="w-8 h-8 text-red-500" />
-          </div>
-          <h1 className="text-2xl font-bold text-illuminious-navy mb-4">
-            Access Denied
-          </h1>
-          <p className="text-muted-foreground mb-6">
-            You don't have permission to access the admin area. Please contact an
-            administrator if you believe this is an error.
-          </p>
-          <Button
-            onClick={() => setLocation("/")}
-            className="bg-illuminious-blue text-white hover:bg-illuminious-navy rounded-full"
-          >
-            Return to Home
-          </Button>
-        </div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-illuminious-navy to-illuminious-blue">
+        <Loader2 className="w-8 h-8 animate-spin text-white" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-illuminious-navy to-illuminious-blue">
-      <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4">
-        <div className="text-center mb-8">
-          <img
-            src="/images/illuminious-logo-blue.png"
-            alt="Illuminious"
-            className="w-16 h-16 mx-auto mb-4"
-          />
-          <h1 className="text-2xl font-bold text-illuminious-navy mb-2">
-            Admin Portal
-          </h1>
-          <p className="text-muted-foreground">
-            Sign in to access the content management system
-          </p>
-        </div>
-
-        <Button
-          asChild
-          className="w-full bg-illuminious-blue text-white hover:bg-illuminious-navy rounded-full"
-        >
-          <a href={getLoginUrl()}>
-            <Lock className="w-4 h-4 mr-2" />
-            Sign in with Manus
-          </a>
-        </Button>
-
-        <p className="text-xs text-center text-muted-foreground mt-6">
-          This is a restricted area. Unauthorized access is prohibited.
-        </p>
-      </div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-illuminious-navy to-illuminious-blue p-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Card className="w-full max-w-md">
+          <CardHeader className="text-center">
+            <img
+              src="/images/illuminious-logo-blue.png"
+              alt="Illuminious"
+              className="w-16 h-16 mx-auto mb-4"
+            />
+            <CardTitle className="text-2xl">Admin Login</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Input
+                  type="text"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <Button
+                type="submit"
+                className="w-full bg-illuminious-blue hover:bg-illuminious-navy"
+                disabled={loginMutation.isPending || isLoggingIn}
+              >
+                {(loginMutation.isPending || isLoggingIn) ? (
+                  <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                ) : (
+                  <LogIn className="w-4 h-4 mr-2" />
+                )}
+                {isLoggingIn ? "Redirecting..." : "Login"}
+              </Button>
+            </form>
+            <p className="text-xs text-center text-muted-foreground mt-4">
+              Default: illuminious / Djpcs17529#
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
     </div>
   );
 }

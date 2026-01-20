@@ -26,7 +26,8 @@ import BlogDetail from "./pages/BlogDetail";
 import Startups from "./pages/Startups";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
-import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -55,8 +56,10 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/thank-you" component={ThankYou} />
       
-      {/* Hidden Admin Route - not linked from navigation */}
-      <Route path="/admin" component={Admin} />
+      {/* Admin Routes - not linked from navigation */}
+      <Route path="/admin" component={AdminLogin} />
+      <Route path="/admin/login" component={AdminLogin} />
+      <Route path="/admin/dashboard" component={AdminDashboard} />
       
       {/* 404 */}
       <Route path="/404" component={NotFound} />

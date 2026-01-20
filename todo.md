@@ -307,3 +307,12 @@
 - [x] 添加图片上传功能（使用内置S3存储） - 代码已存在，使用trpc.posts.uploadImage
 - [x] 添加图片预览功能 - 已添加到RichTextEditor组件
 - [x] 添加视频预览功能 - 已添加YouTube视频预览
+
+## Phase 20: Admin页面分离 (Jan 20, 2026)
+
+### 分离Admin登录和Dashboard
+- [x] 创建独立的AdminLogin页面 (/admin/login)
+- [x] 创建独立的AdminDashboard页面 (/admin/dashboard)
+- [x] 更新App.tsx路由配置
+- [x] 登录成功后使用window.location.href跳转到/admin/dashboard
+- [x] 登出后使用window.location.href跳转到首页

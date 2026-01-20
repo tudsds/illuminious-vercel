@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
-import { useAuth } from "@/_core/hooks/useAuth";
+// Using custom admin authentication via trpc.admin
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -32,6 +32,7 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 type ContentType = "news" | "blog";
 
@@ -83,7 +84,6 @@ const sampleContent: ContentItem[] = [
 ];
 
 export default function AdminDashboard() {
-  const { user, loading, isAuthenticated, logout } = useAuth();
   const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState<"dashboard" | "news" | "blog">("dashboard");
   const [content, setContent] = useState<ContentItem[]>(sampleContent);
@@ -91,16 +91,17 @@ export default function AdminDashboard() {
   const [editingItem, setEditingItem] = useState<ContentItem | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  useEffect(() => {
-    if (!loading && !isAuthenticated) {
-      setLocation("/admin-login");
-    }
-    if (!loading && isAuthenticated && user?.role !== "admin") {
-      setLocation("/admin-login");
-    }
-  }, [loading, isAuthenticated, user, setLocation]);
+  // Check admin authentication using custom admin system
+  const { data: admin, isLoading: adminLoading } = trpc.admin.me.useQuery();
+  const adminLogoutMutation = trpc.admin.logout.useMutation();
 
-  if (loading) {
+  useEffect(() => {
+    if (!adminLoading && !admin) {
+      window.location.href = "/admin/login";
+    }
+  }, [adminLoading, admin]);
+
+  if (adminLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-illuminious-light">
         <Loader2 className="w-12 h-12 animate-spin text-illuminious-blue" />
@@ -108,13 +109,13 @@ export default function AdminDashboard() {
     );
   }
 
-  if (!isAuthenticated || user?.role !== "admin") {
+  if (!admin) {
     return null;
   }
 
   const handleLogout = async () => {
-    await logout();
-    setLocation("/");
+    await adminLogoutMutation.mutateAsync();
+    window.location.href = "/";
   };
 
   const handleCreate = (type: ContentType) => {
@@ -127,7 +128,7 @@ export default function AdminDashboard() {
       content: "",
       category: "",
       image: "",
-      author: user?.name || "Illuminious Team",
+      author: admin?.name || admin?.username || "Illuminious Team",
       status: "draft",
       createdAt: new Date().toISOString().split("T")[0],
       updatedAt: new Date().toISOString().split("T")[0],
@@ -211,7 +212,7 @@ export default function AdminDashboard() {
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-illuminious-light/70">
-              Welcome, {user?.name}
+              Welcome, {admin?.name || admin?.username}
             </span>
             <Button
               variant="outline"
