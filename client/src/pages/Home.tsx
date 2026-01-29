@@ -5,11 +5,15 @@ import {
   Cpu,
   Factory,
   Globe,
-  Package,
   Lightbulb,
-  Truck,
+  Rocket,
+  Scale,
+  Shield,
   CheckCircle,
   ChevronRight,
+  Zap,
+  Building2,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
@@ -18,45 +22,6 @@ import FloatingContact from "@/components/FloatingContact";
 import SEO from "@/components/SEO";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const services = [
-  {
-    icon: Lightbulb,
-    title: "DFM",
-    description: "Design for Manufacturing optimization to reduce costs and improve quality",
-    href: "/services/dfm",
-  },
-  {
-    icon: Factory,
-    title: "OEM",
-    description: "Original Equipment Manufacturing with your brand, our expertise",
-    href: "/services/oem",
-  },
-  {
-    icon: Cpu,
-    title: "ODM",
-    description: "Original Design Manufacturing from concept to finished product",
-    href: "/services/odm",
-  },
-  {
-    icon: Package,
-    title: "EMS",
-    description: "Electronics Manufacturing Services for complex assemblies",
-    href: "/services/ems",
-  },
-  {
-    icon: Globe,
-    title: "Prototyping",
-    description: "Rapid prototyping to validate your designs quickly",
-    href: "/services/prototyping",
-  },
-  {
-    icon: Truck,
-    title: "Logistics",
-    description: "Global logistics and overseas warehouse solutions",
-    href: "/services/logistics",
-  },
-];
-
 const stats = [
   { value: "500+", label: "Products Delivered" },
   { value: "50+", label: "Global Partners" },
@@ -64,13 +29,55 @@ const stats = [
   { value: "99%", label: "Client Satisfaction" },
 ];
 
-const features = [
-  "End-to-end supply chain management",
-  "Tier-1 manufacturing facilities",
-  "US-based customer support",
-  "Competitive pricing with no hidden fees",
-  "Rapid turnaround times",
-  "Quality assurance at every step",
+const advantages = [
+  {
+    icon: Shield,
+    title: "Risk-Free",
+    description: "Contracts signed in the US, protected by US law. Your IP is safe.",
+  },
+  {
+    icon: Scale,
+    title: "Tariff-Free",
+    description: "0% duty solutions via our Indonesia manufacturing hub.",
+  },
+  {
+    icon: Zap,
+    title: "Hassle-Free",
+    description: "Native English communication with zero time-zone lag.",
+  },
+];
+
+const locations = [
+  {
+    flag: "🇺🇸",
+    country: "USA",
+    city: "Palo Alto, CA",
+    role: "The Brain",
+    description: "Legal security, IP protection, and local support. You deal with a US entity, not an overseas shell company.",
+  },
+  {
+    flag: "🇭🇰",
+    country: "Hong Kong",
+    city: "Shenzhen Hub",
+    role: "The Speed",
+    description: "Unmatched engineering depth and supply chain speed. NPI in days, not weeks.",
+  },
+  {
+    flag: "🇮🇩",
+    country: "Indonesia",
+    city: "Batam FTZ",
+    role: "The Scale",
+    description: "Unbeatable labor costs for high-volume orders. Your solution for massive scalability with 0% US tariffs.",
+  },
+];
+
+const trustedLogos = [
+  { name: "TechCorp", initial: "T" },
+  { name: "InnovateLabs", initial: "I" },
+  { name: "SmartDevices", initial: "S" },
+  { name: "FutureTech", initial: "F" },
+  { name: "GlobalIoT", initial: "G" },
+  { name: "NextGen", initial: "N" },
 ];
 
 function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -92,9 +99,9 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Global Electronics Supply Chain Solutions"
-        description="Illuminious is your trusted partner for EMS, OEM, ODM, and DFM services. We bridge the gap between innovation and manufacturing with facilities in USA, Southeast Asia, and China."
-        keywords="electronics manufacturing, OEM, ODM, EMS, DFM, supply chain, prototyping, AI hardware, electronics assembly"
+        title="US-Managed Electronics Manufacturing | Indonesia & China | Illuminious"
+        description="Mitigate risk and avoid tariffs with our hybrid 'China Plus Two' strategy. US engineering, Shenzhen speed, and Southeast Asian scale. Get a quote today."
+        keywords="China Plus Two Strategy, Supply Chain Resilience, Vietnam vs China Manufacturing, tariff free assembly, NPI services, electronics manufacturing"
         url="/"
       />
       <Header />
@@ -112,7 +119,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/30" />
         </div>
 
-        {/* Animated particles/grid effect */}
+        {/* Animated grid effect */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(97, 145, 211, 0.3) 1px, transparent 0)`,
@@ -121,7 +128,7 @@ export default function Home() {
         </div>
 
         <div className="container relative z-10 pt-32 pb-20">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -129,7 +136,7 @@ export default function Home() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-illuminious-navy/80 backdrop-blur-sm text-white text-sm font-medium mb-6 border border-illuminious-sky/30">
                 <Globe className="w-4 h-4" />
-                Global Electronics Supply Chain Partner
+                The New Standard for Resilient Manufacturing
               </span>
             </motion.div>
 
@@ -137,21 +144,29 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
             >
-              From Concept to{" "}
-              <span className="text-illuminious-sky drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Global Delivery</span>
+              From the First 100 to the{" "}
+              <span className="text-illuminious-sky drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Next 1 Million</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-white mb-8 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+              className="text-lg sm:text-xl md:text-2xl text-white/90 mb-3 md:mb-4 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
             >
-              We bridge the gap between your innovative ideas and world-class
-              manufacturing. With facilities across the USA, Southeast Asia, and
-              China, we deliver excellence at every step of your product journey.
+              US Engineering. Shenzhen Speed. Southeast Asia Scale.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="text-base sm:text-lg text-white/80 mb-6 md:mb-8 leading-relaxed max-w-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            >
+              Accelerate NPI in Shenzhen. Scale duty-free in Southeast Asia. 
+              Managed securely from our Palo Alto HQ.
             </motion.p>
 
             <motion.div
@@ -166,7 +181,7 @@ export default function Home() {
                 className="bg-illuminious-blue text-white hover:bg-illuminious-sky rounded-full px-8"
               >
                 <Link href="/contact">
-                  Get Started
+                  Get a Quote
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
@@ -176,7 +191,7 @@ export default function Home() {
                 variant="outline"
                 className="border-illuminious-light/30 text-white hover:bg-white/10 rounded-full px-8"
               >
-                <Link href="/services">Explore Services</Link>
+                <Link href="/factory-tour">Book a Factory Tour</Link>
               </Button>
             </motion.div>
           </div>
@@ -199,8 +214,175 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Stats Section */}
+      {/* Dual Track Selection - The Split */}
+      <section className="py-20 bg-white">
+        <div className="container">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-illuminious-navy mb-4">
+              Stop Choosing Between Cost and Safety
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              We deliver the perfect balance. Whether you're an innovator building your first prototype 
+              or an enterprise scaling to millions, we have the right solution.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* For Innovators */}
+            <AnimatedSection delay={0.1}>
+              <Link href="/services/npi-engineering">
+                <div className="group relative p-8 rounded-2xl bg-gradient-to-br from-illuminious-light/50 to-white border-2 border-illuminious-light hover:border-illuminious-blue hover:shadow-2xl transition-all duration-300 h-full">
+                  <div className="absolute top-4 right-4 w-16 h-16 rounded-full bg-illuminious-blue/10 flex items-center justify-center">
+                    <Lightbulb className="w-8 h-8 text-illuminious-blue" />
+                  </div>
+                  <span className="inline-block px-3 py-1 rounded-full bg-illuminious-blue/10 text-illuminious-blue text-sm font-medium mb-4">
+                    For Innovators
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-illuminious-navy mb-3">
+                    Need Engineering & NPI?
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    Leverage our Shenzhen engineering center for rapid iteration. 
+                    From concept to "Golden Sample" in days, not weeks.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center gap-2 text-sm text-foreground">
+                      <CheckCircle className="w-4 h-4 text-illuminious-blue" />
+                      72-Hour Rapid Prototyping
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-foreground">
+                      <CheckCircle className="w-4 h-4 text-illuminious-blue" />
+                      DFM Review & Optimization
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-foreground">
+                      <CheckCircle className="w-4 h-4 text-illuminious-blue" />
+                      Small-Batch Pilot Runs
+                    </li>
+                  </ul>
+                  <span className="inline-flex items-center text-illuminious-blue font-medium group-hover:gap-2 transition-all">
+                    Explore NPI Services
+                    <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            </AnimatedSection>
+
+            {/* For Scaling */}
+            <AnimatedSection delay={0.2}>
+              <Link href="/services/box-build">
+                <div className="group relative p-8 rounded-2xl bg-gradient-to-br from-illuminious-navy/5 to-white border-2 border-illuminious-light hover:border-illuminious-navy hover:shadow-2xl transition-all duration-300 h-full">
+                  <div className="absolute top-4 right-4 w-16 h-16 rounded-full bg-illuminious-navy/10 flex items-center justify-center">
+                    <Factory className="w-8 h-8 text-illuminious-navy" />
+                  </div>
+                  <span className="inline-block px-3 py-1 rounded-full bg-illuminious-navy/10 text-illuminious-navy text-sm font-medium mb-4">
+                    For Scaling
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-illuminious-navy mb-3">
+                    Need Cost Reduction & Volume?
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    Utilize our Southeast Asian facilities for tariff-free mass production 
+                    with unbeatable labor costs.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center gap-2 text-sm text-foreground">
+                      <CheckCircle className="w-4 h-4 text-illuminious-navy" />
+                      0% US Tariff Solutions
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-foreground">
+                      <CheckCircle className="w-4 h-4 text-illuminious-navy" />
+                      High-Volume Assembly
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-foreground">
+                      <CheckCircle className="w-4 h-4 text-illuminious-navy" />
+                      Non-China BOM Sourcing
+                    </li>
+                  </ul>
+                  <span className="inline-flex items-center text-illuminious-navy font-medium group-hover:gap-2 transition-all">
+                    Explore Mass Production
+                    <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Three Advantages */}
       <section className="py-16 bg-illuminious-light/30">
+        <div className="container">
+          <div className="grid md:grid-cols-3 gap-8">
+            {advantages.map((item, index) => (
+              <AnimatedSection key={item.title} delay={index * 0.1}>
+                <div className="text-center p-6">
+                  <div className="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="w-8 h-8 text-illuminious-blue" />
+                  </div>
+                  <h3 className="text-xl font-bold text-illuminious-navy mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* China+2 Strategy - Global Map */}
+      <section className="py-20 md:py-32 bg-illuminious-navy overflow-hidden">
+        <div className="container">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-illuminious-blue/20 text-illuminious-sky text-sm font-medium mb-6">
+              <Globe className="w-4 h-4" />
+              The "China Plus Two" Advantage
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Your Boots on the Ground, Globally
+            </h2>
+            <p className="text-lg text-illuminious-light/80">
+              We didn't just follow the trends; we anticipated them. Our multi-shore network 
+              is designed for the modern geopolitical landscape.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {locations.map((loc, index) => (
+              <AnimatedSection key={loc.country} delay={index * 0.1}>
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-illuminious-sky/50 transition-colors h-full">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-4xl">{loc.flag}</span>
+                    <div>
+                      <h3 className="text-xl font-bold text-white">{loc.country}</h3>
+                      <p className="text-illuminious-sky text-sm">{loc.city}</p>
+                    </div>
+                  </div>
+                  <div className="inline-block px-3 py-1 rounded-full bg-illuminious-sky/20 text-illuminious-sky text-sm font-medium mb-3">
+                    {loc.role}
+                  </div>
+                  <p className="text-illuminious-light/70 text-sm leading-relaxed">
+                    {loc.description}
+                  </p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.4} className="mt-12 text-center">
+            <Button
+              asChild
+              className="bg-illuminious-sky text-illuminious-navy hover:bg-illuminious-light rounded-full px-8"
+            >
+              <Link href="/about">
+                Learn About Our Strategy
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -217,167 +399,152 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 md:py-32">
+      {/* Three-Phase Lifecycle */}
+      <section className="py-20 md:py-32 bg-illuminious-light/20">
         <div className="container">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-illuminious-navy mb-4">
-              Comprehensive Supply Chain Solutions
+              The Complete Lifecycle: Design, Optimize, Scale
             </h2>
             <p className="text-lg text-muted-foreground">
-              From initial design optimization to final delivery, we provide
-              end-to-end manufacturing services tailored to your needs.
+              Our "Three-Phase Rocket" approach ensures seamless transition from concept to mass production.
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <AnimatedSection key={service.title} delay={index * 0.1}>
-                <Link href={service.href}>
-                  <div className="group p-6 rounded-2xl bg-white border border-illuminious-light hover:border-illuminious-blue hover:shadow-xl transition-all duration-300 h-full">
-                    <div className="w-12 h-12 rounded-xl bg-illuminious-light/50 flex items-center justify-center mb-4 group-hover:bg-illuminious-blue group-hover:text-white transition-colors">
-                      <service.icon className="w-6 h-6 text-illuminious-blue group-hover:text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-illuminious-navy mb-2 group-hover:text-illuminious-blue transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4">{service.description}</p>
-                    <span className="inline-flex items-center text-sm font-medium text-illuminious-blue">
-                      Learn more
-                      <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                    </span>
+          <div className="relative">
+            {/* Connection line */}
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-illuminious-blue via-illuminious-sky to-illuminious-navy -translate-y-1/2 z-0" />
+            
+            <div className="grid lg:grid-cols-3 gap-8 relative z-10">
+              {/* Phase 1 */}
+              <AnimatedSection delay={0.1}>
+                <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-illuminious-blue h-full">
+                  <div className="w-12 h-12 rounded-full bg-illuminious-blue text-white flex items-center justify-center font-bold text-xl mb-4">
+                    1
                   </div>
-                </Link>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🇺🇸</span>
+                    <span className="text-sm font-medium text-illuminious-blue">USA</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-illuminious-navy mb-3">Strategy & DFM</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Start right. Our US engineering team reviews your design files before they ever leave the country. 
+                    We identify risks, optimize for manufacturability, and lock down supply chain strategies.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-blue" />
+                      DFM Review
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-blue" />
+                      Legal Contracts
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-blue" />
+                      IP Protection
+                    </li>
+                  </ul>
+                </div>
+              </AnimatedSection>
+
+              {/* Phase 2 */}
+              <AnimatedSection delay={0.2}>
+                <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-illuminious-sky h-full">
+                  <div className="w-12 h-12 rounded-full bg-illuminious-sky text-illuminious-navy flex items-center justify-center font-bold text-xl mb-4">
+                    2
+                  </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🇭🇰</span>
+                    <span className="text-sm font-medium text-illuminious-sky">Shenzhen</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-illuminious-navy mb-3">The NPI Accelerator</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Iterate fast. Leveraging the unmatched speed of the Shenzhen supply chain, 
+                    we turn concepts into "Golden Samples" in days, not weeks.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-sky" />
+                      72-Hour Rapid Prototyping
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-sky" />
+                      Complex Engineering Validation
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-sky" />
+                      Small-Batch Pilot Runs
+                    </li>
+                  </ul>
+                </div>
+              </AnimatedSection>
+
+              {/* Phase 3 */}
+              <AnimatedSection delay={0.3}>
+                <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-illuminious-navy h-full">
+                  <div className="w-12 h-12 rounded-full bg-illuminious-navy text-white flex items-center justify-center font-bold text-xl mb-4">
+                    3
+                  </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🇮🇩</span>
+                    <span className="text-sm font-medium text-illuminious-navy">Indonesia</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-illuminious-navy mb-3">The Scale Engine</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Grow big. Once the process is perfected, we transfer it via our "Copy Exact" methodology 
+                    to our Southeast Asian facilities for mass production.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-navy" />
+                      0% Tariff Solutions
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-navy" />
+                      High-Volume Assembly
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-illuminious-navy" />
+                      Non-China BOM Sourcing
+                    </li>
+                  </ul>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
+
+          <AnimatedSection delay={0.4} className="mt-12 text-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-illuminious-blue text-white hover:bg-illuminious-navy rounded-full px-8"
+            >
+              <Link href="/services">
+                Explore All Services
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Trusted By */}
+      <section className="py-16 bg-white">
+        <div className="container">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-2xl font-bold text-illuminious-navy mb-2">Trusted By Industry Leaders</h2>
+            <p className="text-muted-foreground">From innovative startups to Fortune 500 companies</p>
+          </AnimatedSection>
+          
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {trustedLogos.map((logo, index) => (
+              <AnimatedSection key={logo.name} delay={index * 0.05}>
+                <div className="w-24 h-24 rounded-xl bg-illuminious-light/50 flex items-center justify-center">
+                  <span className="text-3xl font-bold text-illuminious-navy/30">{logo.initial}</span>
+                </div>
               </AnimatedSection>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Global Network Section */}
-      <section className="py-20 md:py-32 bg-illuminious-navy overflow-hidden">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <AnimatedSection>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-illuminious-blue/20 text-illuminious-sky text-sm font-medium mb-6">
-                <Globe className="w-4 h-4" />
-                Global Presence
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Manufacturing Excellence Across Continents
-              </h2>
-              <p className="text-white/90 text-lg mb-8 leading-relaxed">
-                Our strategic locations in Palo Alto (HQ), Hong Kong (R&D), Indonesia (Production), and China (Production) give you access to world-class manufacturing capabilities with optimized logistics and competitive pricing.
-              </p>
-              <ul className="space-y-4 mb-8">
-                {features.slice(0, 4).map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-white">
-                    <CheckCircle className="w-5 h-5 text-illuminious-sky flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <Button
-                asChild
-                className="bg-illuminious-sky text-illuminious-navy hover:bg-illuminious-light rounded-full px-8"
-              >
-                <Link href="/about">
-                  Learn About Us
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.2}>
-              <div className="relative">
-                <img
-                  src="/images/about-global-network.png"
-                  alt="Global Supply Chain Network"
-                  className="rounded-2xl shadow-2xl"
-                />
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-illuminious-light flex items-center justify-center">
-                      <Truck className="w-6 h-6 text-illuminious-blue" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-muted-foreground">Average Delivery</div>
-                      <div className="text-xl font-bold text-illuminious-navy">14 Days</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* AI Hardware Focus */}
-      <section className="py-20 md:py-32">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <AnimatedSection className="order-2 lg:order-1">
-              <div className="grid grid-cols-2 gap-4">
-                <img
-                  src="/images/service-ai-glasses.png"
-                  alt="AI Smart Glasses"
-                  className="rounded-xl shadow-lg"
-                />
-                <img
-                  src="/images/service-ai-companion.png"
-                  alt="AI Companion Robot"
-                  className="rounded-xl shadow-lg mt-8"
-                />
-                <img
-                  src="/images/service-ai-accessories.png"
-                  alt="AI Accessories"
-                  className="rounded-xl shadow-lg col-span-2"
-                />
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection className="order-1 lg:order-2" delay={0.2}>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-illuminious-light text-illuminious-blue text-sm font-medium mb-6">
-                <Cpu className="w-4 h-4" />
-                AI Hardware Expertise
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-illuminious-navy mb-6">
-                Pioneering the Future of AI Hardware
-              </h2>
-              <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                From AI-powered smart glasses to companion robots and wearable
-                devices, we specialize in bringing cutting-edge AI hardware
-                products to life. Our expertise spans the entire product
-                lifecycle.
-              </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-foreground">
-                  <CheckCircle className="w-5 h-5 text-illuminious-blue flex-shrink-0" />
-                  AI Smart Glasses & Wearables
-                </li>
-                <li className="flex items-center gap-3 text-foreground">
-                  <CheckCircle className="w-5 h-5 text-illuminious-blue flex-shrink-0" />
-                  Companion Robots & IoT Devices
-                </li>
-                <li className="flex items-center gap-3 text-foreground">
-                  <CheckCircle className="w-5 h-5 text-illuminious-blue flex-shrink-0" />
-                  Voice Recorders & AI Accessories
-                </li>
-                <li className="flex items-center gap-3 text-foreground">
-                  <CheckCircle className="w-5 h-5 text-illuminious-blue flex-shrink-0" />
-                  Consumer Electronics & Smart Home
-                </li>
-              </ul>
-              <Button
-                asChild
-                className="bg-illuminious-blue text-white hover:bg-illuminious-navy rounded-full px-8"
-              >
-                <Link href="/services">
-                  View All Services
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -391,12 +558,13 @@ export default function Home() {
         </div>
         <div className="container relative z-10">
           <AnimatedSection className="text-center max-w-3xl mx-auto">
+            <Rocket className="w-16 h-16 text-illuminious-sky mx-auto mb-6" />
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Are You a Hardware Startup?
             </h2>
             <p className="text-xl text-illuminious-light/90 mb-8">
               Join our exclusive Startups Program and get access to preferential
-              pricing, dedicated support, and a fast-track path from prototype to
+              pricing, dedicated engineering support, and a fast-track path from prototype to
               mass production.
             </p>
             <Button
@@ -413,44 +581,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 md:py-32 bg-illuminious-white">
-        <div className="container">
-          <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-illuminious-navy mb-4">
-              Why Partner With Illuminious?
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              We combine Silicon Valley innovation with global manufacturing
-              excellence to deliver results that exceed expectations.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <AnimatedSection key={feature} delay={index * 0.1}>
-                <div className="flex items-start gap-4 p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-10 h-10 rounded-full bg-illuminious-light flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-illuminious-blue" />
-                  </div>
-                  <p className="text-foreground font-medium">{feature}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 bg-white">
         <div className="container">
-          <AnimatedSection className="text-center">
+          <AnimatedSection className="text-center max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-illuminious-navy mb-4">
               Ready to Start Your Project?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Get in touch with our team to discuss your manufacturing needs. We
-              provide free consultations and detailed quotes within 48 hours.
+            <p className="text-lg text-muted-foreground mb-8">
+              Whether you need rapid prototyping or high-volume production, 
+              our team is ready to help you succeed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -459,7 +599,7 @@ export default function Home() {
                 className="bg-illuminious-blue text-white hover:bg-illuminious-navy rounded-full px-8"
               >
                 <Link href="/contact">
-                  Request a Quote
+                  Get a Quote
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
@@ -467,9 +607,9 @@ export default function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-illuminious-blue text-illuminious-blue hover:bg-illuminious-light rounded-full px-8"
+                className="border-illuminious-navy text-illuminious-navy hover:bg-illuminious-light rounded-full px-8"
               >
-                <a href="mailto:info@illuminious.com">Email Us Directly</a>
+                <Link href="/factory-tour">Schedule a DFM Review</Link>
               </Button>
             </div>
           </AnimatedSection>

@@ -1,21 +1,23 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight, Clock, User, Loader2 } from "lucide-react";
+import { Calendar, ArrowRight, Clock, User, Loader2, Tag, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import SEO from "@/components/SEO";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { trpc } from "@/lib/trpc";
+import { useState } from "react";
 
-// Fallback blog data for when database is empty
+// Rich blog content for SEO and user engagement
 const fallbackBlogPosts = [
   {
     id: 1,
     slug: "choosing-right-manufacturing-partner",
     title: "How to Choose the Right Manufacturing Partner for Your Hardware Startup",
-    excerpt: "Selecting the right manufacturing partner is one of the most critical decisions for hardware startups. Learn the key factors to consider.",
+    excerpt: "Selecting the right manufacturing partner is one of the most critical decisions for hardware startups. Learn the key factors to consider including quality systems, communication, and scalability.",
     publishedAt: new Date("2026-01-12"),
     readTime: 8,
     authorName: "Illuminious Team",
@@ -26,7 +28,7 @@ const fallbackBlogPosts = [
     id: 2,
     slug: "dfm-best-practices",
     title: "Design for Manufacturing: Best Practices for Electronics Products",
-    excerpt: "Implementing DFM principles early in your product development can save significant time and money. Here's how to get it right.",
+    excerpt: "Implementing DFM principles early in your product development can save significant time and money. Here's how to get it right from the start.",
     publishedAt: new Date("2026-01-08"),
     readTime: 10,
     authorName: "Illuminious Team",
@@ -46,15 +48,46 @@ const fallbackBlogPosts = [
   },
   {
     id: 4,
-    slug: "supply-chain-optimization",
-    title: "Optimizing Your Electronics Supply Chain for Global Markets",
-    excerpt: "Learn strategies to build a resilient and efficient supply chain that can serve customers worldwide.",
+    slug: "supply-chain-diversification-china-plus-one",
+    title: "China+1 Strategy: Building a Resilient Supply Chain",
+    excerpt: "Learn how leading companies are diversifying their manufacturing footprint with Indonesia and Southeast Asia while maintaining Shenzhen's engineering advantages.",
     publishedAt: new Date("2025-12-28"),
-    readTime: 7,
+    readTime: 9,
     authorName: "Illuminious Team",
     featuredImage: "/images/about-global-network.png",
-    category: "Operations",
+    category: "Supply Chain",
   },
+  {
+    id: 5,
+    slug: "iot-device-manufacturing-guide",
+    title: "Complete Guide to IoT Device Manufacturing",
+    excerpt: "From RF design considerations to wireless certification, everything you need to know about manufacturing connected devices.",
+    publishedAt: new Date("2025-12-20"),
+    readTime: 12,
+    authorName: "Illuminious Team",
+    featuredImage: "/images/hero-global-supply-chain.png",
+    category: "Technical",
+  },
+  {
+    id: 6,
+    slug: "medical-device-manufacturing-fda",
+    title: "FDA Compliance in Medical Device Manufacturing",
+    excerpt: "Understanding 510(k) requirements, ISO 13485, and what to look for in a medical device manufacturing partner.",
+    publishedAt: new Date("2025-12-15"),
+    readTime: 11,
+    authorName: "Illuminious Team",
+    featuredImage: "/images/industry-medical.png",
+    category: "Regulated Industries",
+  },
+];
+
+const categories = [
+  "All",
+  "Startup Guide",
+  "Technical",
+  "Industry Insights",
+  "Supply Chain",
+  "Regulated Industries",
 ];
 
 function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -73,12 +106,14 @@ function AnimatedSection({ children, className = "", delay = 0 }: { children: Re
 }
 
 export default function Blog() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  
   const { data: dbPosts, isLoading } = trpc.posts.list.useQuery({
     type: "blog",
     publishedOnly: true,
   });
 
-  // Use database posts if available, otherwise use fallback
   const blogPosts = dbPosts && dbPosts.length > 0 ? dbPosts.map(post => ({
     id: post.id,
     slug: post.slug,
@@ -91,27 +126,29 @@ export default function Blog() {
     category: post.category || "Blog",
   })) : fallbackBlogPosts;
 
-  const featuredPost = blogPosts[0];
-  const otherPosts = blogPosts.slice(1);
+  const filteredPosts = blogPosts.filter(post => {
+    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const featuredPost = filteredPosts[0];
+  const otherPosts = filteredPosts.slice(1);
 
   return (
     <>
       <SEO
-        title="Blog"
-        description="Insights, guides, and industry knowledge from the Illuminious team. Learn about electronics manufacturing, supply chain, and hardware startups."
-        keywords="electronics manufacturing blog, hardware startup guide, supply chain insights, DFM best practices"
+        title="Blog | Electronics Manufacturing Insights | Illuminious"
+        description="Expert insights on electronics manufacturing, supply chain optimization, DFM best practices, and hardware startup guides from the Illuminious team."
+        keywords="electronics manufacturing blog, hardware startup guide, supply chain insights, DFM best practices, China+1 strategy"
         url="/blog"
       />
       <Header />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 bg-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.3) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-illuminious-light/30 to-white" />
         <div className="container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -119,13 +156,53 @@ export default function Blog() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#132843' }}>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-illuminious-blue/10 text-illuminious-blue text-sm font-medium mb-6">
+              <Tag className="w-4 h-4" />
               Insights & Resources
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-illuminious-navy mb-4">
+              Manufacturing Knowledge Hub
             </h1>
-            <p className="text-xl text-illuminious-navy/70">
-              Expert knowledge and practical guides for hardware entrepreneurs and manufacturers.
+            <p className="text-xl text-muted-foreground mb-8">
+              Expert guides, industry insights, and practical knowledge for hardware entrepreneurs 
+              and manufacturing professionals.
             </p>
+            
+            {/* Search and Filter */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 rounded-full border-illuminious-light"
+                />
+              </div>
+            </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Category Filter */}
+      <section className="py-6 border-b border-illuminious-light bg-white sticky top-20 z-30">
+        <div className="container">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  selectedCategory === category
+                    ? "bg-illuminious-blue text-white"
+                    : "bg-illuminious-light/50 text-illuminious-navy hover:bg-illuminious-light"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -228,11 +305,41 @@ export default function Blog() {
         </>
       )}
 
-      {blogPosts.length === 0 && !isLoading && (
-        <div className="text-center py-20 text-muted-foreground">
-          No blog posts available at the moment.
+      {filteredPosts.length === 0 && !isLoading && (
+        <div className="text-center py-20">
+          <p className="text-muted-foreground mb-4">No articles found matching your criteria.</p>
+          <Button
+            variant="outline"
+            onClick={() => { setSelectedCategory("All"); setSearchQuery(""); }}
+          >
+            Clear filters
+          </Button>
         </div>
       )}
+
+      {/* Newsletter CTA */}
+      <section className="py-20 bg-illuminious-navy">
+        <div className="container">
+          <AnimatedSection className="text-center max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Stay Updated
+            </h2>
+            <p className="text-lg text-illuminious-light/80 mb-8">
+              Get the latest manufacturing insights and industry updates delivered to your inbox.
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-illuminious-sky text-illuminious-navy hover:bg-illuminious-light rounded-full px-8"
+            >
+              <Link href="/contact">
+                Subscribe to Updates
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+          </AnimatedSection>
+        </div>
+      </section>
 
       <Footer />
       <FloatingContact />

@@ -2,16 +2,14 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Lightbulb,
-  Factory,
   Cpu,
-  Package,
+  Factory,
   Wrench,
+  Package,
   Truck,
-  CircuitBoard,
-  Box,
-  TestTube,
-  Layers,
+  Lightbulb,
+  ChevronRight,
+  CheckCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
@@ -23,91 +21,80 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const services = [
   {
     icon: Lightbulb,
-    title: "Design for Manufacturing (DFM)",
-    description: "Optimize your product design for efficient manufacturing, reducing costs and improving quality from the start.",
-    features: ["Design optimization", "Cost reduction analysis", "Material selection", "Manufacturability assessment"],
-    href: "/services/dfm",
-    image: "/images/service-dfm-design.png",
-  },
-  {
-    icon: Factory,
-    title: "Original Equipment Manufacturing (OEM)",
-    description: "Manufacture products to your exact specifications under your brand with our world-class facilities.",
-    features: ["Your design, our production", "Quality assurance", "Scalable capacity", "Brand packaging"],
-    href: "/services/oem",
-    image: "/images/about-factory-equipment.png",
+    title: "NPI & Engineering",
+    subtitle: "New Product Introduction",
+    description: "From concept to Golden Sample in days. Our Shenzhen engineering center delivers rapid prototyping, DFM optimization, and engineering validation with unmatched speed.",
+    features: ["72-Hour Rapid Prototyping", "DFM Review & Optimization", "Engineering Validation", "Small-Batch Pilot Runs"],
+    href: "/services/npi-engineering",
+    phase: "Phase 1 & 2",
+    location: "🇺🇸 USA + 🇭🇰 Shenzhen",
   },
   {
     icon: Cpu,
-    title: "Original Design Manufacturing (ODM)",
-    description: "Leverage our design expertise to create products from concept to completion under your brand.",
-    features: ["Full product development", "Custom modifications", "IP protection", "Turnkey solutions"],
-    href: "/services/odm",
-    image: "/images/service-ai-glasses.png",
+    title: "PCB Assembly (PCBA)",
+    subtitle: "Surface Mount Technology",
+    description: "High-precision SMT assembly with advanced capabilities including 0201 components, BGA, fine pitch, and complex multi-layer boards.",
+    features: ["0201 Component Placement", "BGA & Fine Pitch", "Multi-Layer PCB", "AOI & X-Ray Inspection"],
+    href: "/services/pcb-assembly",
+    phase: "Phase 2",
+    location: "🇭🇰 Shenzhen",
   },
   {
     icon: Package,
-    title: "Electronics Manufacturing Services (EMS)",
-    description: "Complete electronics assembly services from PCB assembly to final product integration.",
-    features: ["SMT assembly", "Through-hole assembly", "Box build", "Testing & QC"],
-    href: "/services/ems",
-    image: "/images/service-prototyping.png",
-  },
-  {
-    icon: CircuitBoard,
-    title: "PCB Manufacturing & Assembly (PCBA)",
-    description: "Complete PCB fabrication and assembly services from prototype to mass production with precision and reliability.",
-    features: ["Multi-layer PCB", "SMT/THT assembly", "Quick turn prototyping", "AOI & X-ray inspection"],
-    href: "/services/pcb",
-    image: "/images/service-pcb.png",
-  },
-  {
-    icon: Box,
-    title: "Tooling & Injection Molding",
-    description: "Professional tooling design and injection molding services for plastic enclosures and custom components.",
-    features: ["Mold design & engineering", "Precision tooling", "Multi-cavity molds", "Surface finishing"],
-    href: "/services/molding",
-    image: "/images/service-molding.png",
-  },
-  {
-    icon: Layers,
-    title: "IC Packaging & Semiconductor Services",
-    description: "Advanced chip packaging and semiconductor backend services including wire bonding and flip chip technologies.",
-    features: ["Wire bonding", "Flip chip assembly", "System in Package (SiP)", "Module assembly"],
-    href: "/services/packaging",
-    image: "/images/service-packaging.png",
+    title: "Box Build & System Integration",
+    subtitle: "Complete Product Assembly",
+    description: "Full system integration from sub-assemblies to finished products. Cable assembly, enclosure integration, and final product testing.",
+    features: ["Sub-Assembly Integration", "Cable & Wire Harness", "Enclosure Assembly", "Functional Testing"],
+    href: "/services/box-build",
+    phase: "Phase 3",
+    location: "🇮🇩 Indonesia",
   },
   {
     icon: Wrench,
-    title: "Product Assembly & Box Build",
-    description: "End-to-end product assembly and box build services from sub-assembly to market-ready products.",
-    features: ["Mechanical assembly", "Cable & harness", "Electro-mechanical integration", "Final packaging"],
-    href: "/services/assembly",
-    image: "/images/service-assembly.png",
-  },
-  {
-    icon: Wrench,
-    title: "Rapid Prototyping",
-    description: "Quickly validate your designs with our rapid prototyping services before committing to mass production.",
-    features: ["3D printing", "CNC machining", "Functional prototypes", "Design iteration"],
-    href: "/services/prototyping",
-    image: "/images/service-prototyping.png",
-  },
-  {
-    icon: TestTube,
-    title: "Quality Testing & Certification",
-    description: "Comprehensive testing and certification services to ensure your products meet quality and regulatory standards.",
-    features: ["Functional testing", "Environmental testing", "EMC/EMI testing", "Certification support"],
-    href: "/services/testing",
-    image: "/images/service-testing.png",
+    title: "Plastic Injection & Tooling",
+    subtitle: "Mold Design & Manufacturing",
+    description: "End-to-end tooling services from mold design to mass production. Precision injection molding for complex geometries and tight tolerances.",
+    features: ["Mold Design & DFM", "Rapid Tooling", "Multi-Cavity Molds", "Insert & Overmolding"],
+    href: "/services/injection-molding",
+    phase: "Phase 2 & 3",
+    location: "🇭🇰 Shenzhen + 🇮🇩 Indonesia",
   },
   {
     icon: Truck,
-    title: "Logistics & Overseas Warehouse",
-    description: "Streamline your supply chain with our global logistics network and US-based fulfillment center.",
-    features: ["Inventory management", "Order fulfillment", "Customs clearance", "Last-mile delivery"],
-    href: "/services/logistics",
-    image: "/images/about-overseas-warehouse.png",
+    title: "Supply Chain & Logistics",
+    subtitle: "Global Fulfillment",
+    description: "Comprehensive supply chain management including component sourcing, inventory management, and global logistics with US warehousing.",
+    features: ["Non-China BOM Sourcing", "Inventory Management", "US Warehouse", "DDP/DDU Shipping"],
+    href: "/services/supply-chain",
+    phase: "All Phases",
+    location: "🌐 Global",
+  },
+];
+
+const phases = [
+  {
+    number: 1,
+    title: "Strategy & DFM",
+    location: "USA",
+    flag: "🇺🇸",
+    color: "bg-illuminious-blue",
+    description: "Design review, legal contracts, IP protection",
+  },
+  {
+    number: 2,
+    title: "NPI Accelerator",
+    location: "Shenzhen",
+    flag: "🇭🇰",
+    color: "bg-illuminious-sky",
+    description: "Rapid prototyping, engineering validation",
+  },
+  {
+    number: 3,
+    title: "Scale Engine",
+    location: "Indonesia",
+    flag: "🇮🇩",
+    color: "bg-illuminious-navy",
+    description: "Mass production, tariff-free assembly",
   },
 ];
 
@@ -130,21 +117,16 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Our Services"
-        description="Explore Illuminious comprehensive manufacturing services including DFM, OEM, ODM, EMS, PCB assembly, injection molding, IC packaging, testing, and global logistics solutions."
-        keywords="manufacturing services, DFM, OEM, ODM, EMS, PCB assembly, injection molding, IC packaging, electronics assembly, prototyping, logistics"
+        title="End-to-End Manufacturing Services | NPI to Mass Production | Illuminious"
+        description="Complete electronics manufacturing services from NPI and engineering to mass production. PCB assembly, box build, injection molding, and global logistics."
+        keywords="NPI services, PCB assembly, box build, injection molding, supply chain, electronics manufacturing"
         url="/services"
       />
       <Header />
-
+      
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-illuminious-navy via-illuminious-blue to-illuminious-sky overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.3) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
+      <section className="relative pt-32 pb-20 bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-illuminious-light/30 to-white" />
         <div className="container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -152,60 +134,37 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-illuminious-navy mb-6">
-              End-to-End Manufacturing Solutions
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-illuminious-blue/10 text-illuminious-blue text-sm font-medium mb-6">
+              <Factory className="w-4 h-4" />
+              End-to-End Solutions
+            </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-illuminious-navy mb-6">
+              The Complete Manufacturing Lifecycle
             </h1>
-            <p className="text-xl text-illuminious-light/90 leading-relaxed">
-              From initial design optimization to final delivery, we provide
-              comprehensive services tailored to your unique manufacturing needs.
+            <p className="text-xl text-muted-foreground mb-8">
+              From your first prototype to your millionth unit. Our "Three-Phase Rocket" 
+              approach ensures seamless transition through every stage of your product journey.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 md:py-32">
+      {/* Three Phase Overview */}
+      <section className="py-12 bg-illuminious-navy">
         <div className="container">
-          <div className="space-y-24">
-            {services.map((service, index) => (
-              <AnimatedSection key={service.title}>
-                <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                  <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-illuminious-light flex items-center justify-center">
-                        <service.icon className="w-6 h-6 text-illuminious-blue" />
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#132843' }}>
-                        {service.title}
-                      </h2>
-                    </div>
-                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
-                    <ul className="grid grid-cols-2 gap-3 mb-8">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-2 text-sm">
-                          <div className="w-1.5 h-1.5 rounded-full bg-illuminious-blue" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button
-                      asChild
-                      className="bg-illuminious-blue text-white hover:bg-illuminious-navy rounded-full px-6"
-                    >
-                      <Link href={service.href}>
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
-                    </Button>
+          <div className="grid md:grid-cols-3 gap-6">
+            {phases.map((phase, index) => (
+              <AnimatedSection key={phase.number} delay={index * 0.1}>
+                <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div className={`w-12 h-12 rounded-full ${phase.color} flex items-center justify-center text-white font-bold text-xl`}>
+                    {phase.number}
                   </div>
-                  <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="rounded-2xl shadow-xl w-full"
-                    />
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl">{phase.flag}</span>
+                      <span className="text-white font-semibold">{phase.title}</span>
+                    </div>
+                    <p className="text-illuminious-light/70 text-sm">{phase.description}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -214,35 +173,71 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 md:py-32 bg-illuminious-light/30">
+      {/* Services Grid */}
+      <section className="py-20 md:py-32">
         <div className="container">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-illuminious-navy mb-4">
-              Our Process
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-illuminious-navy mb-4">
+              Our Service Portfolio
             </h2>
             <p className="text-lg text-muted-foreground">
-              A streamlined approach to bring your product from concept to market.
+              Each service is designed to integrate seamlessly with our global manufacturing network, 
+              giving you the flexibility to optimize for speed, cost, or both.
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { step: "01", title: "Consultation", desc: "Understand your requirements and goals" },
-              { step: "02", title: "Design & Planning", desc: "Optimize design for manufacturing" },
-              { step: "03", title: "Production", desc: "Quality manufacturing at scale" },
-              { step: "04", title: "Delivery", desc: "Global logistics and fulfillment" },
-            ].map((item, index) => (
-              <AnimatedSection key={item.step} delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="text-5xl font-bold text-illuminious-light mb-4">
-                    {item.step}
+          <div className="space-y-8">
+            {services.map((service, index) => (
+              <AnimatedSection key={service.title} delay={index * 0.1}>
+                <Link href={service.href}>
+                  <div className="group bg-white rounded-2xl border border-illuminious-light hover:border-illuminious-blue hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div className="grid md:grid-cols-3 gap-6 p-6 md:p-8">
+                      {/* Left - Icon & Title */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-14 h-14 rounded-xl bg-illuminious-light/50 flex items-center justify-center group-hover:bg-illuminious-blue group-hover:text-white transition-colors flex-shrink-0">
+                          <service.icon className="w-7 h-7 text-illuminious-blue group-hover:text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-illuminious-navy group-hover:text-illuminious-blue transition-colors">
+                            {service.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">{service.subtitle}</p>
+                          <div className="flex items-center gap-2 mt-2">
+                            <span className="text-xs px-2 py-1 rounded-full bg-illuminious-light text-illuminious-navy">
+                              {service.phase}
+                            </span>
+                            <span className="text-xs text-muted-foreground">{service.location}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Middle - Description */}
+                      <div className="md:col-span-1">
+                        <p className="text-muted-foreground leading-relaxed">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      {/* Right - Features */}
+                      <div className="flex flex-col justify-between">
+                        <ul className="space-y-2">
+                          {service.features.map((feature) => (
+                            <li key={feature} className="flex items-center gap-2 text-sm">
+                              <CheckCircle className="w-4 h-4 text-illuminious-blue flex-shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="mt-4 flex justify-end">
+                          <span className="inline-flex items-center text-sm font-medium text-illuminious-blue group-hover:gap-2 transition-all">
+                            Learn more
+                            <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-illuminious-navy mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground">{item.desc}</p>
-                </div>
+                </Link>
               </AnimatedSection>
             ))}
           </div>
@@ -252,24 +247,34 @@ export default function Services() {
       {/* CTA Section */}
       <section className="py-20 bg-illuminious-navy">
         <div className="container">
-          <AnimatedSection className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Get Started?
+          <AnimatedSection className="text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+              Not Sure Where to Start?
             </h2>
-            <p className="text-lg text-white/90 mb-8">
-              Contact us today for a free consultation and quote. Our team is
-              ready to help bring your product to life.
+            <p className="text-lg text-illuminious-light/80 mb-8">
+              Our team can help you identify the right services for your project stage. 
+              Schedule a free consultation to discuss your needs.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-illuminious-sky text-illuminious-navy hover:bg-illuminious-light rounded-full px-8"
-            >
-              <Link href="/contact">
-                Request a Quote
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-illuminious-sky text-illuminious-navy hover:bg-illuminious-light rounded-full px-8"
+              >
+                <Link href="/contact">
+                  Get a Quote
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-illuminious-light/30 text-white hover:bg-white/10 rounded-full px-8"
+              >
+                <Link href="/factory-tour">Book a Factory Tour</Link>
+              </Button>
+            </div>
           </AnimatedSection>
         </div>
       </section>

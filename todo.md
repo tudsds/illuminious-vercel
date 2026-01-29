@@ -349,3 +349,80 @@
 
 ### 路由配置
 - [x] 更新App.tsx添加新路由
+
+
+## Phase 23: 全站重构 - 按照导航与SEO方案 (Jan 28, 2026)
+
+### 基础设施
+- [x] 删除Admin Portal相关页面和路由
+- [x] 部署GTM代码(GTM-TV3WNHSZ)到head和body
+- [x] 更新最新版Logo
+
+### 首页(HOME)重构
+- [x] Hero Section: 全球制造网络背景，H1:"From the First 100 to the Next 1 Million"
+- [x] Split Section: 双轨选择(Innovators vs Scaling)
+- [x] China+2 Advantage: 世界地图高亮LA/深圳/印尼
+- [x] Trusted By: 客户Logo墙
+- [x] SEO: Title/Meta优化
+
+### 关于我们(ABOUT US)重构
+- [x] US Foundation Section: 美国法律实体/IP保护
+- [x] Shenzhen Brain Section: JDM能力/Hardware Co-pilots
+- [x] Leadership Team Section: 核心人物展示
+- [x] Compliance Section: ISO/UL证书展示
+- [x] Our Story: China+2策略故事
+
+### 服务(SERVICES)页面体系
+- [x] 父页面: End-to-End Solutions (三级火箭全流程)
+- [x] 子页面: NPI & Engineering (NPI与工程)
+- [x] 子页面: PCB Assembly (PCBA组装)
+- [x] 子页面: Box Build & System Integration (成品组装)
+- [x] 子页面: Plastic Injection & Tooling (注塑与模具)
+- [x] 子页面: Supply Chain & Logistics (供应链与物流)
+
+### 工厂巡礼(FACTORY TOUR)
+- [x] Video Hero Section
+- [x] Shenzhen Innovation Lab Section
+- [x] Indonesia Mega Factory Section
+- [x] Virtual Tour CTA Section
+- [x] Copy Exact Promise Section
+
+### 成功案例(CASE STUDIES)
+- [x] 案例列表页(带筛选功能)
+- [x] 按行业分类: Consumer Electronics, Smart Home, Industrial
+- [x] 按挑战分类: Cost Reduction, Tariff Avoidance, Complex Engineering
+- [x] 旗舰案例: Tariff Escape详细页面
+
+### 行业解决方案(INDUSTRIES)
+- [x] IoT & Smart Home页面
+- [x] Consumer Electronics页面
+- [x] Automotive & Industrial页面
+- [x] Medical & Healthcare页面
+
+### 能力(CAPABILITIES)
+- [x] Manufacturing Facilities页面
+- [x] Quality Control页面
+- [x] IoT Specialization页面
+
+### Blog重构
+- [x] Market Insights分类
+- [x] Engineering Tech分类
+- [x] Company News分类
+
+### 导航菜单
+- [x] Mega Menu结构实现
+- [x] Services下拉菜单
+- [x] Industries下拉菜单
+- [x] 移动端导航优化
+
+### 移动端优化
+- [x] 响应式布局检查
+- [x] 移动端Logo显示
+- [x] 触摸友好的交互
+- [x] 文字排版优化
+
+### SEO优化
+- [x] 所有页面Title Tag
+- [x] 所有页面Meta Description
+- [x] 结构化数据
+- [x] 图片Alt标签
