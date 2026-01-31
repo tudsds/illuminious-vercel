@@ -28,9 +28,9 @@ const caseStudies: Record<string, {
     title: "Smart Home Device Manufacturer",
     industry: "Consumer IoT",
     challenge: "A US-based smart home company needed to scale from 1,000 to 50,000 units/month while reducing landed costs by 30% to compete with established players.",
-    solution: "We implemented our Three-Phase Rocket approach: NPI in Shenzhen for rapid iteration, then transferred production to Indonesia for cost-optimized mass production.",
+    solution: "We implemented our Three-Phase Rocket approach: NPI in Asia Pacific for rapid iteration, then transferred production to Indonesia for cost-optimized mass production.",
     results: [
-      { metric: "Cost Reduction", value: "35%", description: "Landed cost savings vs. China-only production" },
+      { metric: "Cost Reduction", value: "35%", description: "Landed cost savings through optimized manufacturing" },
       { metric: "Time to Market", value: "8 Weeks", description: "From concept to first production batch" },
       { metric: "Quality Rate", value: "99.7%", description: "First-pass yield rate" },
     ],
@@ -38,7 +38,7 @@ const caseStudies: Record<string, {
     image: "/images/service-ai-glasses.png",
     tags: ["Consumer Electronics", "IoT", "Scale-Up"],
     details: [
-      "Rapid prototyping in Shenzhen with 72-hour turnaround",
+      "Rapid prototyping in Asia Pacific with 72-hour turnaround",
       "DFM optimization reduced BOM cost by 15%",
       "Copy Exact process transfer to Indonesia facility",
       "US warehouse stocking for 3-day domestic delivery",

@@ -106,7 +106,7 @@ export default function ServiceInjection() {
                 Plastic Injection & Tooling
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                From mold design to mass production. Prototype tooling in Shenzhen, 
+                From mold design to mass production. Prototype tooling in Asia Pacific, 
                 production tooling in Indonesia for optimal cost and quality balance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -238,7 +238,7 @@ export default function ServiceInjection() {
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-3xl">🇭🇰</span>
                   <div>
-                    <h3 className="text-xl font-bold text-illuminious-navy">Stage 1: Shenzhen</h3>
+                    <h3 className="text-xl font-bold text-illuminious-navy">Stage 1: Asia Pacific</h3>
                     <p className="text-sm text-illuminious-blue">Rapid Tooling & Prototyping</p>
                   </div>
                 </div>
@@ -286,7 +286,7 @@ export default function ServiceInjection() {
                   </li>
                   <li className="flex items-center gap-2 text-sm">
                     <CheckCircle className="w-4 h-4 text-illuminious-navy" />
-                    0% US tariff on finished goods
+                    Optimized landed costs
                   </li>
                 </ul>
               </div>

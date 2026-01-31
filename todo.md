@@ -426,3 +426,33 @@
 - [x] 所有页面Meta Description
 - [x] 结构化数据
 - [x] 图片Alt标签
+
+
+## Phase 24: 文案修改 - 淡化中国元素，优化关税表述 (Jan 29, 2026)
+
+### 核心修改原则
+- [x] 强调美国本土公司身份
+- [x] 将中国定位为全球制造网络的一部分（非核心）
+- [x] 移除所有"0%关税"具体数字
+- [x] 改用"关税优化"、"成本优化"等安全表述
+
+### 首页(Home)修改
+- [x] 修改Hero Section副标题（移除Shenzhen Speed）
+- [x] 修改"China+2 Advantage"为"Global Manufacturing Network"
+- [x] 修改双轨选择区域的关税相关表述
+- [x] 修改三阶段火箭流程中的中国/关税表述
+
+### 关于我们(About)修改
+- [x] 修改"Shenzhen Brain"为更中性的表述
+- [x] 修改全球办公室描述，平衡各地区权重
+
+### 服务(Services)页面修改
+- [x] 修改Supply Chain页面的关税相关内容
+- [x] 修改其他服务页面中的中国相关表述
+
+### 其他页面修改
+- [x] 修改Factory Tour页面的中国工厂描述
+- [x] 修改Case Studies中的关税相关案例
+- [x] 修改Industries页面中的相关表述
+- [x] 修改Capabilities页面中的相关表述
+

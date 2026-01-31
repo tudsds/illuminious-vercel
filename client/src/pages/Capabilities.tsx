@@ -42,7 +42,7 @@ const capabilities = [
   {
     icon: Zap,
     title: "Rapid Prototyping",
-    description: "72-hour prototype turnaround leveraging Shenzhen's unmatched supply chain ecosystem.",
+    description: "72-hour prototype turnaround leveraging our Asia Pacific engineering center's supply chain ecosystem.",
     features: ["72-Hour Turnaround", "DFM Review", "Small Batch", "Quick Iteration"],
     href: "/services/npi-engineering",
   },

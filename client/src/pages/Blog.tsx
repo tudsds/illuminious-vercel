@@ -48,9 +48,9 @@ const fallbackBlogPosts = [
   },
   {
     id: 4,
-    slug: "supply-chain-diversification-china-plus-one",
-    title: "China+1 Strategy: Building a Resilient Supply Chain",
-    excerpt: "Learn how leading companies are diversifying their manufacturing footprint with Indonesia and Southeast Asia while maintaining Shenzhen's engineering advantages.",
+    slug: "supply-chain-diversification-strategy",
+    title: "Supply Chain Diversification: Building a Resilient Manufacturing Network",
+    excerpt: "Learn how leading companies are diversifying their manufacturing footprint with Indonesia and Southeast Asia while maintaining engineering excellence.",
     publishedAt: new Date("2025-12-28"),
     readTime: 9,
     authorName: "Illuminious Team",
@@ -141,7 +141,7 @@ export default function Blog() {
       <SEO
         title="Blog | Electronics Manufacturing Insights | Illuminious"
         description="Expert insights on electronics manufacturing, supply chain optimization, DFM best practices, and hardware startup guides from the Illuminious team."
-        keywords="electronics manufacturing blog, hardware startup guide, supply chain insights, DFM best practices, China+1 strategy"
+        keywords="electronics manufacturing blog, hardware startup guide, supply chain insights, DFM best practices, supply chain diversification"
         url="/blog"
       />
       <Header />

@@ -20,10 +20,10 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const facilities = [
   {
     flag: "🇭🇰",
-    name: "Shenzhen Innovation Lab",
-    location: "Shenzhen, China",
+    name: "Asia Pacific Engineering Center",
+    location: "Greater Bay Area",
     role: "NPI & Engineering Center",
-    description: "Our Shenzhen facility is the heart of our rapid prototyping and engineering capabilities. Located in the world's electronics manufacturing hub, we have immediate access to the entire supply chain ecosystem.",
+    description: "Our Asia Pacific facility is the heart of our rapid prototyping and engineering capabilities. Located in one of the world's leading electronics manufacturing regions, we have immediate access to a comprehensive supply chain ecosystem.",
     features: [
       "Advanced SMT lines with 0201 capability",
       "Rapid prototyping center (72-hour turnaround)",
@@ -35,10 +35,10 @@ const facilities = [
   },
   {
     flag: "🇮🇩",
-    name: "Indonesia Mega Factory",
+    name: "Indonesia Production Center",
     location: "Batam Free Trade Zone",
     role: "Mass Production Hub",
-    description: "Our Indonesia facility in the Batam Free Trade Zone offers the perfect combination of cost efficiency and quality. Products assembled here qualify for 0% US import tariffs.",
+    description: "Our Indonesia facility in the Batam Free Trade Zone offers the perfect combination of cost efficiency and quality. Strategic location enables optimized landed costs for US customers.",
     features: [
       "50,000 sq ft production floor",
       "High-volume SMT and assembly lines",
@@ -59,17 +59,17 @@ const copyExactSteps = [
   {
     step: "02",
     title: "Equipment Calibration",
-    description: "Identical equipment is calibrated to match Shenzhen specifications exactly.",
+    description: "Identical equipment is calibrated to match NPI center specifications exactly.",
   },
   {
     step: "03",
     title: "Operator Training",
-    description: "Indonesian operators are trained by Shenzhen engineers on exact procedures.",
+    description: "Indonesian operators are trained by our engineering team on exact procedures.",
   },
   {
     step: "04",
     title: "Pilot Verification",
-    description: "First production batch is verified against Shenzhen golden samples.",
+    description: "First production batch is verified against engineering center golden samples.",
   },
 ];
 
@@ -92,9 +92,9 @@ export default function FactoryTour() {
   return (
     <>
       <SEO
-        title="Factory Tour | Shenzhen & Indonesia Manufacturing Facilities | Illuminious"
-        description="Tour our manufacturing facilities in Shenzhen and Indonesia. See our SMT lines, engineering labs, and mass production capabilities. Book a virtual or in-person tour."
-        keywords="factory tour, manufacturing facility, Shenzhen factory, Indonesia factory, electronics manufacturing"
+        title="Factory Tour | Asia Pacific & Indonesia Manufacturing Facilities | Illuminious"
+        description="Tour our manufacturing facilities in Asia Pacific and Indonesia. See our SMT lines, engineering labs, and mass production capabilities. Book a virtual or in-person tour."
+        keywords="factory tour, manufacturing facility, Asia Pacific factory, Indonesia factory, electronics manufacturing"
         url="/factory-tour"
       />
       <Header />
@@ -123,7 +123,7 @@ export default function FactoryTour() {
             </h1>
             <p className="text-xl text-illuminious-light/80 mb-8">
               Take a virtual tour of our state-of-the-art manufacturing facilities 
-              in Shenzhen and Indonesia.
+              in Asia Pacific and Indonesia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -226,7 +226,7 @@ export default function FactoryTour() {
               The "Copy Exact" Promise
             </h2>
             <p className="text-lg text-muted-foreground">
-              When we transfer production from Shenzhen to Indonesia, we don't just move it—we 
+              When we transfer production from our NPI center to Indonesia, we don't just move it—we 
               replicate it exactly. Every process, every parameter, every quality standard.
             </p>
           </AnimatedSection>

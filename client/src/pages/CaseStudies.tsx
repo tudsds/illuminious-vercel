@@ -21,9 +21,9 @@ const caseStudies = [
     title: "Smart Home Device Manufacturer",
     industry: "Consumer IoT",
     challenge: "A US-based smart home company needed to scale from 1,000 to 50,000 units/month while reducing landed costs by 30% to compete with established players.",
-    solution: "We implemented our Three-Phase Rocket approach: NPI in Shenzhen for rapid iteration, then transferred production to Indonesia for cost-optimized mass production.",
+    solution: "We implemented our Three-Phase Rocket approach: NPI at our Asia Pacific engineering center for rapid iteration, then transferred production to Indonesia for cost-optimized mass production.",
     results: [
-      { metric: "Cost Reduction", value: "35%", description: "Landed cost savings vs. China-only production" },
+      { metric: "Cost Reduction", value: "35%", description: "Landed cost savings through optimized supply chain" },
       { metric: "Time to Market", value: "8 Weeks", description: "From concept to first production batch" },
       { metric: "Quality Rate", value: "99.7%", description: "First-pass yield rate" },
     ],
@@ -65,10 +65,10 @@ const caseStudies = [
     id: "automotive-electronics",
     title: "Automotive Electronics Supplier",
     industry: "Automotive",
-    challenge: "An automotive Tier 2 supplier needed to diversify their supply chain away from China while maintaining IATF 16949 quality standards.",
+    challenge: "An automotive Tier 2 supplier needed to diversify their supply chain while maintaining IATF 16949 quality standards.",
     solution: "We established a dedicated production line in Indonesia with automotive-grade quality systems and supported their PPAP documentation requirements.",
     results: [
-      { metric: "Supply Chain", value: "Diversified", description: "Non-China production capability" },
+      { metric: "Supply Chain", value: "Diversified", description: "Multi-region production capability" },
       { metric: "Quality Standard", value: "IATF 16949", description: "Automotive quality certification" },
       { metric: "Lead Time", value: "Reduced 40%", description: "With US warehouse stocking" },
     ],
@@ -137,7 +137,7 @@ export default function CaseStudies() {
               { icon: TrendingUp, value: "35%", label: "Avg. Cost Savings" },
               { icon: Clock, value: "8 Weeks", label: "Avg. Time to Market" },
               { icon: Award, value: "99.5%", label: "Quality Rate" },
-              { icon: DollarSign, value: "$0", label: "US Tariffs" },
+              { icon: DollarSign, value: "Optimized", label: "Landed Costs" },
             ].map((stat, index) => (
               <AnimatedSection key={stat.label} delay={index * 0.1}>
                 <div className="text-center">

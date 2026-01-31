@@ -41,7 +41,7 @@ const capabilities = [
 
 const specs = [
   { label: "Labor Cost Savings", value: "40-60%" },
-  { label: "US Tariff", value: "0%" },
+  { label: "Landed Cost", value: "Optimized" },
   { label: "Production Capacity", value: "10K+/Month" },
   { label: "Quality Standard", value: "ISO 9001" },
 ];
@@ -101,7 +101,7 @@ export default function ServiceBoxBuild() {
                 Box Build & System Integration
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Complete product assembly in our Indonesia facility. Leverage 0% US tariffs 
+                Complete product assembly in our Indonesia facility. Leverage optimized landed costs 
                 and significant labor cost savings without compromising quality.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -209,8 +209,8 @@ export default function ServiceBoxBuild() {
                       <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                      <strong className="text-illuminious-navy">0% US Tariffs</strong>
-                      <p className="text-sm text-muted-foreground">Products assembled in Indonesia qualify for duty-free import to the US.</p>
+                      <strong className="text-illuminious-navy">Optimized Landed Costs</strong>
+                      <p className="text-sm text-muted-foreground">Products assembled in Indonesia benefit from favorable trade agreements.</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -228,7 +228,7 @@ export default function ServiceBoxBuild() {
                     </div>
                     <div>
                       <strong className="text-illuminious-navy">Copy Exact Process</strong>
-                      <p className="text-sm text-muted-foreground">Validated processes transferred from Shenzhen ensure consistent quality.</p>
+                      <p className="text-sm text-muted-foreground">Validated processes transferred from our NPI center ensure consistent quality.</p>
                     </div>
                   </li>
                 </ul>

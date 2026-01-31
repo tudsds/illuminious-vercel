@@ -23,11 +23,11 @@ const services = [
     icon: Lightbulb,
     title: "NPI & Engineering",
     subtitle: "New Product Introduction",
-    description: "From concept to Golden Sample in days. Our Shenzhen engineering center delivers rapid prototyping, DFM optimization, and engineering validation with unmatched speed.",
+    description: "From concept to Golden Sample in days. Our Asia Pacific engineering center delivers rapid prototyping, DFM optimization, and engineering validation with unmatched speed.",
     features: ["72-Hour Rapid Prototyping", "DFM Review & Optimization", "Engineering Validation", "Small-Batch Pilot Runs"],
     href: "/services/npi-engineering",
     phase: "Phase 1 & 2",
-    location: "🇺🇸 USA + 🇭🇰 Shenzhen",
+    location: "🇺🇸 USA + 🇭🇰 Asia Pacific",
   },
   {
     icon: Cpu,
@@ -37,7 +37,7 @@ const services = [
     features: ["0201 Component Placement", "BGA & Fine Pitch", "Multi-Layer PCB", "AOI & X-Ray Inspection"],
     href: "/services/pcb-assembly",
     phase: "Phase 2",
-    location: "🇭🇰 Shenzhen",
+    location: "🇭🇰 Asia Pacific",
   },
   {
     icon: Package,
@@ -57,14 +57,14 @@ const services = [
     features: ["Mold Design & DFM", "Rapid Tooling", "Multi-Cavity Molds", "Insert & Overmolding"],
     href: "/services/injection-molding",
     phase: "Phase 2 & 3",
-    location: "🇭🇰 Shenzhen + 🇮🇩 Indonesia",
+    location: "🇭🇰 Asia Pacific + 🇮🇩 Indonesia",
   },
   {
     icon: Truck,
     title: "Supply Chain & Logistics",
     subtitle: "Global Fulfillment",
     description: "Comprehensive supply chain management including component sourcing, inventory management, and global logistics with US warehousing.",
-    features: ["Non-China BOM Sourcing", "Inventory Management", "US Warehouse", "DDP/DDU Shipping"],
+    features: ["Global BOM Sourcing", "Inventory Management", "US Warehouse", "DDP/DDU Shipping"],
     href: "/services/supply-chain",
     phase: "All Phases",
     location: "🌐 Global",
@@ -83,7 +83,7 @@ const phases = [
   {
     number: 2,
     title: "NPI Accelerator",
-    location: "Shenzhen",
+    location: "Asia Pacific",
     flag: "🇭🇰",
     color: "bg-illuminious-sky",
     description: "Rapid prototyping, engineering validation",
@@ -94,7 +94,7 @@ const phases = [
     location: "Indonesia",
     flag: "🇮🇩",
     color: "bg-illuminious-navy",
-    description: "Mass production, tariff-free assembly",
+    description: "Mass production, cost-optimized assembly",
   },
 ];
 

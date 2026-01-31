@@ -179,17 +179,17 @@ export default function IndustryAutomotive() {
                   Supply Chain Diversification
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  Our Indonesia facility provides automotive suppliers with a non-China 
-                  production option while maintaining quality standards.
+                  Our Indonesia facility provides automotive suppliers with 
+                  diversified production options while maintaining quality standards.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-green-600" />
-                    <span>Non-China production capability</span>
+                    <span>Multi-region production capability</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-green-600" />
-                    <span>0% US tariffs on finished goods</span>
+                    <span>Optimized landed costs for US market</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-green-600" />

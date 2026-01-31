@@ -31,7 +31,7 @@ const advantages = [
   {
     icon: DollarSign,
     title: "Cost Optimized",
-    description: "Indonesia assembly delivers 40-60% labor cost savings with 0% US tariffs.",
+    description: "Indonesia assembly delivers 40-60% labor cost savings with optimized landed costs.",
   },
   {
     icon: Zap,

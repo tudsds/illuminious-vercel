@@ -27,9 +27,9 @@ const locations = [
   {
     name: "United States",
     city: "Palo Alto, CA",
-    description: "Headquarters & Legal Entity",
+    description: "Global Headquarters",
     flag: "🇺🇸",
-    role: "The Foundation",
+    role: "Headquarters",
     details: "US contracts, IP protection, customer success",
   },
   {
@@ -37,24 +37,24 @@ const locations = [
     city: "Hong Kong SAR",
     description: "R&D & Engineering Center",
     flag: "🇭🇰",
-    role: "The Brain",
+    role: "Engineering Hub",
     details: "JDM capability, hardware co-pilots",
   },
   {
-    name: "China",
-    city: "Shenzhen, GD",
-    description: "NPI & Engineering Hub",
-    flag: "🇨🇳",
-    role: "The Speed",
-    details: "72-hour prototyping, supply chain access",
+    name: "Asia Pacific",
+    city: "Greater Bay Area",
+    description: "NPI & Prototyping Center",
+    flag: "🌏",
+    role: "NPI Center",
+    details: "72-hour prototyping, rapid iteration",
   },
   {
     name: "Indonesia",
     city: "Batam Island FTZ",
     description: "Mass Production Center",
     flag: "🇮🇩",
-    role: "The Scale",
-    details: "0% tariff, high-volume assembly",
+    role: "Production Hub",
+    details: "Cost-optimized, high-volume assembly",
   },
 ];
 
@@ -132,9 +132,9 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Illuminious | US-Managed Global Electronics Manufacturing"
-        description="Illuminious is a US-based electronics manufacturing partner with facilities in Indonesia and China. We combine Silicon Valley innovation with Asian manufacturing excellence."
-        keywords="about illuminious, US electronics manufacturing, China Plus Two strategy, supply chain partner, OEM ODM company"
+        title="About Illuminious | US Electronics Manufacturing Company"
+        description="Illuminious is a US-based electronics manufacturing company with global production capabilities. We combine Silicon Valley innovation with world-class manufacturing excellence."
+        keywords="about illuminious, US electronics manufacturing, American EMS company, supply chain partner, OEM ODM company"
         url="/about"
       />
       <Header />
@@ -163,7 +163,7 @@ export default function About() {
             </h1>
             <p className="text-lg sm:text-xl text-illuminious-light/90 leading-relaxed mb-8 max-w-3xl">
               Illuminious LLC is a Delaware-incorporated company headquartered in Palo Alto, California. 
-              We combine Silicon Valley's innovation mindset with Asia's manufacturing excellence to help 
+              We combine Silicon Valley's innovation mindset with world-class manufacturing excellence to help 
               hardware companies navigate the complexities of global supply chains.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -251,7 +251,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* The China+2 Story */}
+      {/* Global Manufacturing Network */}
       <section className="py-20 md:py-32 bg-illuminious-light/30">
         <div className="container">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
@@ -260,11 +260,11 @@ export default function About() {
               Our Story
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-illuminious-navy mb-4">
-              The "China Plus Two" Strategy
+              Global Manufacturing Network
             </h2>
             <p className="text-lg text-muted-foreground">
-              We didn't just follow the trend—we anticipated it. Our multi-shore network was designed 
-              for the modern geopolitical landscape before most companies even recognized the need.
+              As a US company, we've built strategic partnerships across multiple regions. 
+              Our diversified network provides flexibility, resilience, and optimized costs for every project.
             </p>
           </AnimatedSection>
 
@@ -293,7 +293,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Shenzhen Brain - JDM Capability */}
+      {/* Engineering Excellence - JDM Capability */}
       <section className="py-20 md:py-32 bg-illuminious-navy">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

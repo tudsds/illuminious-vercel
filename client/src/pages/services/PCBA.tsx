@@ -90,7 +90,7 @@ export default function ServicePCBA() {
             >
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-2xl">🇭🇰</span>
-                <span className="text-sm font-medium text-illuminious-blue">Phase 2 - Shenzhen</span>
+                <span className="text-sm font-medium text-illuminious-blue">Phase 2 - Asia Pacific</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-illuminious-navy mb-6">
                 PCB Assembly (PCBA)

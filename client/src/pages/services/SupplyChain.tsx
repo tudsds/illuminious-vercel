@@ -19,7 +19,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const capabilities = [
   {
     icon: Globe,
-    title: "Non-China BOM Sourcing",
+    title: "Global BOM Sourcing",
     description: "Strategic component sourcing from Taiwan, Japan, Korea, and Southeast Asia to diversify your supply chain.",
   },
   {
@@ -104,7 +104,7 @@ export default function ServiceSupplyChain() {
     <>
       <SEO
         title="Supply Chain & Logistics | Global Fulfillment | US Warehouse | Illuminious"
-        description="End-to-end supply chain management with non-China sourcing, US warehousing, and global logistics. DDP/DDU shipping with customs clearance support."
+        description="End-to-end supply chain management with global sourcing, US warehousing, and global logistics. DDP/DDU shipping with customs clearance support."
         keywords="supply chain management, logistics, US warehouse, component sourcing, BOM sourcing, DDP shipping"
         url="/services/supply-chain"
       />
@@ -255,7 +255,7 @@ export default function ServiceSupplyChain() {
             <AnimatedSection delay={0.2}>
               <div className="bg-illuminious-navy rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-white mb-4">
-                  The Non-China Sourcing Advantage
+                  The Global Sourcing Advantage
                 </h3>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">

@@ -22,7 +22,7 @@ const capabilities = [
   {
     icon: Zap,
     title: "72-Hour Rapid Prototyping",
-    description: "From design files to functional prototype in just 3 days. Leverage Shenzhen's unmatched supply chain speed.",
+    description: "From design files to functional prototype in just 3 days. Leverage our Asia Pacific engineering center's supply chain speed.",
   },
   {
     icon: FileCheck,
@@ -51,19 +51,19 @@ const process = [
   {
     step: "02",
     title: "Rapid Prototyping",
-    location: "🇭🇰 Shenzhen",
-    description: "Leveraging Shenzhen's supply chain, we produce functional prototypes in 72 hours for quick iteration.",
+    location: "🇭🇰 Asia Pacific",
+    description: "Leveraging our Asia Pacific supply chain, we produce functional prototypes in 72 hours for quick iteration.",
   },
   {
     step: "03",
     title: "Engineering Validation",
-    location: "🇭🇰 Shenzhen",
+    location: "🇭🇰 Asia Pacific",
     description: "Comprehensive testing including EVT, DVT, and PVT to validate design and manufacturing processes.",
   },
   {
     step: "04",
     title: "Golden Sample",
-    location: "🇭🇰 Shenzhen",
+    location: "🇭🇰 Asia Pacific",
     description: "Produce the final approved sample that serves as the reference for mass production.",
   },
 ];
@@ -72,7 +72,7 @@ const specs = [
   { label: "Prototype Turnaround", value: "72 Hours" },
   { label: "DFM Review", value: "24-48 Hours" },
   { label: "Pilot Run Capacity", value: "50-500 Units" },
-  { label: "Engineering Support", value: "US + Shenzhen" },
+  { label: "Engineering Support", value: "US + Asia Pacific" },
 ];
 
 function AnimatedSection({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -120,7 +120,7 @@ export default function ServiceNPI() {
                 NPI & Engineering
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                From concept to "Golden Sample" in days, not weeks. Our hybrid US-Shenzhen 
+                From concept to "Golden Sample" in days, not weeks. Our hybrid US-Asia Pacific 
                 engineering model delivers unmatched speed without sacrificing quality or IP protection.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -175,7 +175,7 @@ export default function ServiceNPI() {
               Engineering Capabilities
             </h2>
             <p className="text-lg text-muted-foreground">
-              Our NPI services combine US engineering expertise with Shenzhen's 
+              Our NPI services combine US engineering expertise with Asia Pacific's 
               unmatched supply chain speed.
             </p>
           </AnimatedSection>
@@ -252,7 +252,7 @@ export default function ServiceNPI() {
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-illuminious-blue flex-shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-illuminious-navy">Shenzhen Speed</strong>
+                    <strong className="text-illuminious-navy">Asia Pacific Speed</strong>
                     <p className="text-muted-foreground">Access to the world's fastest supply chain for components and manufacturing.</p>
                   </div>
                 </li>

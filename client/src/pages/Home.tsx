@@ -37,8 +37,8 @@ const advantages = [
   },
   {
     icon: Scale,
-    title: "Tariff-Free",
-    description: "0% duty solutions via our Indonesia manufacturing hub.",
+    title: "Cost-Optimized",
+    description: "Strategic manufacturing locations for optimized landed costs and supply chain efficiency.",
   },
   {
     icon: Zap,
@@ -52,22 +52,22 @@ const locations = [
     flag: "🇺🇸",
     country: "USA",
     city: "Palo Alto, CA",
-    role: "The Brain",
-    description: "Legal security, IP protection, and local support. You deal with a US entity, not an overseas shell company.",
+    role: "Headquarters",
+    description: "Legal security, IP protection, and local support. You deal with a US company, governed by US law.",
   },
   {
     flag: "🇭🇰",
     country: "Hong Kong",
-    city: "Shenzhen Hub",
-    role: "The Speed",
-    description: "Unmatched engineering depth and supply chain speed. NPI in days, not weeks.",
+    city: "Asia Pacific Hub",
+    role: "Engineering Center",
+    description: "World-class engineering depth and rapid prototyping capabilities. NPI in days, not weeks.",
   },
   {
     flag: "🇮🇩",
     country: "Indonesia",
     city: "Batam FTZ",
-    role: "The Scale",
-    description: "Unbeatable labor costs for high-volume orders. Your solution for massive scalability with 0% US tariffs.",
+    role: "Production Center",
+    description: "Competitive labor costs for high-volume orders. Strategic location for optimized supply chain.",
   },
 ];
 
@@ -99,9 +99,9 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="US-Managed Electronics Manufacturing | Indonesia & China | Illuminious"
-        description="Mitigate risk and avoid tariffs with our hybrid 'China Plus Two' strategy. US engineering, Shenzhen speed, and Southeast Asian scale. Get a quote today."
-        keywords="China Plus Two Strategy, Supply Chain Resilience, Vietnam vs China Manufacturing, tariff free assembly, NPI services, electronics manufacturing"
+        title="US Electronics Manufacturing Company | Global Production Network | Illuminious"
+        description="American electronics manufacturing company with global production capabilities. US engineering excellence, rapid prototyping, and scalable mass production. Get a quote today."
+        keywords="US electronics manufacturing, American EMS company, global supply chain, NPI services, electronics manufacturing, PCB assembly"
         url="/"
       />
       <Header />
@@ -156,7 +156,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg sm:text-xl md:text-2xl text-white/90 mb-3 md:mb-4 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
             >
-              US Engineering. Shenzhen Speed. Southeast Asia Scale.
+              US Engineering. Global Speed. Scalable Production.
             </motion.p>
 
             <motion.p
@@ -165,8 +165,8 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="text-base sm:text-lg text-white/80 mb-6 md:mb-8 leading-relaxed max-w-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
             >
-              Accelerate NPI in Shenzhen. Scale duty-free in Southeast Asia. 
-              Managed securely from our Palo Alto HQ.
+              Accelerate NPI with world-class engineering. Scale production globally. 
+              Managed securely from our Palo Alto headquarters.
             </motion.p>
 
             <motion.div
@@ -242,7 +242,7 @@ export default function Home() {
                     Need Engineering & NPI?
                   </h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Leverage our Shenzhen engineering center for rapid iteration. 
+                    Leverage our Asia Pacific engineering center for rapid iteration. 
                     From concept to "Golden Sample" in days, not weeks.
                   </p>
                   <ul className="space-y-2 mb-6">
@@ -281,13 +281,13 @@ export default function Home() {
                     Need Cost Reduction & Volume?
                   </h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Utilize our Southeast Asian facilities for tariff-free mass production 
-                    with unbeatable labor costs.
+                    Utilize our global facilities for cost-optimized mass production 
+                    with competitive labor costs.
                   </p>
                   <ul className="space-y-2 mb-6">
                     <li className="flex items-center gap-2 text-sm text-foreground">
                       <CheckCircle className="w-4 h-4 text-illuminious-navy" />
-                      0% US Tariff Solutions
+                      Optimized Landed Costs
                     </li>
                     <li className="flex items-center gap-2 text-sm text-foreground">
                       <CheckCircle className="w-4 h-4 text-illuminious-navy" />
@@ -295,7 +295,7 @@ export default function Home() {
                     </li>
                     <li className="flex items-center gap-2 text-sm text-foreground">
                       <CheckCircle className="w-4 h-4 text-illuminious-navy" />
-                      Non-China BOM Sourcing
+                      Flexible BOM Sourcing
                     </li>
                   </ul>
                   <span className="inline-flex items-center text-illuminious-navy font-medium group-hover:gap-2 transition-all">
@@ -328,20 +328,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* China+2 Strategy - Global Map */}
+      {/* Global Manufacturing Network - Map */}
       <section className="py-20 md:py-32 bg-illuminious-navy overflow-hidden">
         <div className="container">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-illuminious-blue/20 text-illuminious-sky text-sm font-medium mb-6">
               <Globe className="w-4 h-4" />
-              The "China Plus Two" Advantage
+              Global Manufacturing Network
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Your Boots on the Ground, Globally
             </h2>
             <p className="text-lg text-illuminious-light/80">
-              We didn't just follow the trends; we anticipated them. Our multi-shore network 
-              is designed for the modern geopolitical landscape.
+              As a US company, we've built a strategic global network to serve you better. 
+              Multiple manufacturing locations mean flexibility, resilience, and optimized costs.
             </p>
           </AnimatedSection>
 
@@ -456,11 +456,11 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-2xl">🇭🇰</span>
-                    <span className="text-sm font-medium text-illuminious-sky">Shenzhen</span>
+                    <span className="text-sm font-medium text-illuminious-sky">Asia Pacific</span>
                   </div>
                   <h3 className="text-xl font-bold text-illuminious-navy mb-3">The NPI Accelerator</h3>
                   <p className="text-muted-foreground mb-4">
-                    Iterate fast. Leveraging the unmatched speed of the Shenzhen supply chain, 
+                    Iterate fast. Leveraging our Asia Pacific engineering hub, 
                     we turn concepts into "Golden Samples" in days, not weeks.
                   </p>
                   <ul className="space-y-2">
@@ -498,7 +498,7 @@ export default function Home() {
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-illuminious-navy" />
-                      0% Tariff Solutions
+                      Optimized Landed Costs
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-illuminious-navy" />
@@ -506,7 +506,7 @@ export default function Home() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-illuminious-navy" />
-                      Non-China BOM Sourcing
+                      Flexible Global Sourcing
                     </li>
                   </ul>
                 </div>

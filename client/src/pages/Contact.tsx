@@ -62,10 +62,10 @@ const offices = [
     flag: "🇭🇰",
   },
   {
-    location: "China",
-    city: "Shenzhen, GD",
-    type: "Production Center",
-    flag: "🇨🇳",
+    location: "Asia Pacific",
+    city: "Greater Bay Area",
+    type: "Engineering Center",
+    flag: "🌏",
   },
   {
     location: "Indonesia",

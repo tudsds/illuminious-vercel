@@ -185,7 +185,7 @@ export default function Industries() {
             {[
               { title: "Quality Systems", desc: "ISO 9001, ISO 13485, IATF 16949 ready" },
               { title: "Global Certifications", desc: "FCC, CE, IC, MIC, RCM support" },
-              { title: "Supply Chain", desc: "Non-China sourcing options" },
+              { title: "Supply Chain", desc: "Global sourcing options" },
               { title: "US Fulfillment", desc: "West Coast warehouse" },
             ].map((item, index) => (
               <AnimatedSection key={item.title} delay={index * 0.1}>

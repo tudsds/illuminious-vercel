@@ -315,7 +315,7 @@ export default function Startups() {
                 Powered by <span className="text-cyber-cyan">Future Factory</span>
               </h2>
               <p className="text-gray-400 text-lg mb-6 leading-relaxed">
-                Through our partnership with Future Factory in Shenzhen, we offer
+                Through our partnership with Future Factory in Asia Pacific, we offer
                 unparalleled access to AI hardware manufacturing expertise. Their
                 specialization in AI glasses, companion robots, and wearables
                 complements our global supply chain capabilities.
@@ -324,7 +324,7 @@ export default function Startups() {
                 {[
                   "AI hardware design expertise",
                   "Cutting-edge prototyping capabilities",
-                  "Access to Shenzhen's electronics ecosystem",
+                  "Access to Asia Pacific's electronics ecosystem",
                   "Integrated R&D and manufacturing",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-gray-300">
