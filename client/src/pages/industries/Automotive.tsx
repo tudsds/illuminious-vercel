@@ -209,7 +209,7 @@ export default function IndustryAutomotive() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Discuss Your Automotive Project?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Our team understands automotive requirements. Let's talk.
             </p>
             <Button

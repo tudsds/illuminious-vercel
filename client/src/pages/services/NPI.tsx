@@ -159,7 +159,7 @@ export default function ServiceNPI() {
               <AnimatedSection key={spec.label} delay={index * 0.1}>
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1">{spec.value}</div>
-                  <div className="text-sm text-illuminious-light/70">{spec.label}</div>
+                  <div className="text-sm text-white">{spec.label}</div>
                 </div>
               </AnimatedSection>
             ))}
@@ -283,7 +283,7 @@ export default function ServiceNPI() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Accelerate Your Product Development?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Get a free DFM review and see how fast we can turn your concept into reality.
             </p>
             <Button

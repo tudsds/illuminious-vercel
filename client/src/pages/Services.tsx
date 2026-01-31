@@ -164,7 +164,7 @@ export default function Services() {
                       <span className="text-xl">{phase.flag}</span>
                       <span className="text-white font-semibold">{phase.title}</span>
                     </div>
-                    <p className="text-illuminious-light/70 text-sm">{phase.description}</p>
+                    <p className="text-white text-sm">{phase.description}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -251,8 +251,8 @@ export default function Services() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               Not Sure Where to Start?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
-              Our team can help you identify the right services for your project stage. 
+            <p className="text-lg text-white mb-8">
+              Our team can help you identify the right services for your project stage.
               Schedule a free consultation to discuss your needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

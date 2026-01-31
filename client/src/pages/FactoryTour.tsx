@@ -121,7 +121,7 @@ export default function FactoryTour() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               See Where Your Products Come to Life
             </h1>
-            <p className="text-xl text-illuminious-light/80 mb-8">
+            <p className="text-xl text-white mb-8">
               Take a virtual tour of our state-of-the-art manufacturing facilities 
               in Shenzhen and Indonesia.
             </p>
@@ -333,7 +333,7 @@ export default function FactoryTour() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to See Our Capabilities?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Book a tour today and see firsthand why leading companies trust us 
               with their manufacturing needs.
             </p>

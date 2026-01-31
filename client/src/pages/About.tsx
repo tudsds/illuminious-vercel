@@ -161,9 +161,9 @@ export default function About() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Your Hardware Co-Pilot from Concept to Scale
             </h1>
-            <p className="text-lg sm:text-xl text-illuminious-light/90 leading-relaxed mb-8 max-w-3xl">
-              Illuminious LLC is a Delaware-incorporated company headquartered in Palo Alto, California. 
-              We combine Silicon Valley's innovation mindset with Asia's manufacturing excellence to help 
+            <p className="text-lg sm:text-xl text-white leading-relaxed mb-8 max-w-3xl">
+              Illuminious LLC is a Delaware-incorporated company headquartered in Palo Alto, California.
+              We combine Silicon Valley's innovation mindset with Asia's manufacturing excellence to help
               hardware companies navigate the complexities of global supply chains.
             </p>
             <div className="flex flex-wrap gap-4">

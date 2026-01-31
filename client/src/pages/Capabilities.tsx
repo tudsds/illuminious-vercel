@@ -233,7 +233,7 @@ export default function Capabilities() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Leverage Our Capabilities?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Let's discuss how our capabilities can help bring your product to market.
             </p>
             <Button

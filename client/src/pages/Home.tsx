@@ -339,8 +339,8 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Your Boots on the Ground, Globally
             </h2>
-            <p className="text-lg text-illuminious-light/80">
-              We didn't just follow the trends; we anticipated them. Our multi-shore network 
+            <p className="text-lg text-white">
+              We didn't just follow the trends; we anticipated them. Our multi-shore network
               is designed for the modern geopolitical landscape.
             </p>
           </AnimatedSection>
@@ -359,7 +359,7 @@ export default function Home() {
                   <div className="inline-block px-3 py-1 rounded-full bg-illuminious-sky/20 text-illuminious-sky text-sm font-medium mb-3">
                     {loc.role}
                   </div>
-                  <p className="text-illuminious-light/70 text-sm leading-relaxed">
+                  <p className="text-white text-sm leading-relaxed">
                     {loc.description}
                   </p>
                 </div>
@@ -451,7 +451,7 @@ export default function Home() {
               {/* Phase 2 */}
               <AnimatedSection delay={0.2}>
                 <div className="bg-white rounded-2xl p-8 shadow-lg border-t-4 border-illuminious-sky h-full">
-                  <div className="w-12 h-12 rounded-full bg-illuminious-sky text-illuminious-navy flex items-center justify-center font-bold text-xl mb-4">
+                  <div className="w-12 h-12 rounded-full bg-illuminious-sky text-white flex items-center justify-center font-bold text-xl mb-4">
                     2
                   </div>
                   <div className="flex items-center gap-2 mb-2">

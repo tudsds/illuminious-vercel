@@ -240,7 +240,7 @@ export default function CapabilityQuality() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Quality You Can Trust
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Request our quality documentation or schedule a quality audit.
             </p>
             <Button
