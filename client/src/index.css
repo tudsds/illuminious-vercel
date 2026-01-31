@@ -256,6 +256,17 @@
   .border-illuminious-light { border-color: var(--illuminious-light); }
   .border-illuminious-blue { border-color: var(--illuminious-blue); }
   
+  /* Gradient from/via/to utilities for illuminious colors */
+  .from-illuminious-navy { --tw-gradient-from: var(--illuminious-navy) var(--tw-gradient-from-position); --tw-gradient-to: rgb(19 40 67 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .from-illuminious-blue { --tw-gradient-from: var(--illuminious-blue) var(--tw-gradient-from-position); --tw-gradient-to: rgb(57 102 162 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .from-illuminious-sky { --tw-gradient-from: var(--illuminious-sky) var(--tw-gradient-from-position); --tw-gradient-to: rgb(97 145 211 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .via-illuminious-navy { --tw-gradient-to: rgb(19 40 67 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--illuminious-navy) var(--tw-gradient-via-position), var(--tw-gradient-to); }
+  .via-illuminious-blue { --tw-gradient-to: rgb(57 102 162 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--illuminious-blue) var(--tw-gradient-via-position), var(--tw-gradient-to); }
+  .via-illuminious-sky { --tw-gradient-to: rgb(97 145 211 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--illuminious-sky) var(--tw-gradient-via-position), var(--tw-gradient-to); }
+  .to-illuminious-navy { --tw-gradient-to: var(--illuminious-navy) var(--tw-gradient-to-position); }
+  .to-illuminious-blue { --tw-gradient-to: var(--illuminious-blue) var(--tw-gradient-to-position); }
+  .to-illuminious-sky { --tw-gradient-to: var(--illuminious-sky) var(--tw-gradient-to-position); }
+  
   /* Gradient utilities */
   .gradient-illuminious {
     background: linear-gradient(135deg, var(--illuminious-navy) 0%, var(--illuminious-blue) 50%, var(--illuminious-sky) 100%);

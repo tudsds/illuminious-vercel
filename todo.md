@@ -274,3 +274,155 @@
 - [x] Generate AI Smart Ring product image (realistic style based on Oura Ring)
 - [x] Generate AI Smart Pendant product image (realistic style based on Limitless Pendant)
 - [x] Generate AI Wearable Pin product image (realistic style based on Humane AI Pin)
+
+## Phase 18: 营销优化执行计划 (Jan 20, 2026)
+
+### 我可以完成的任务
+- [ ] 创建Privacy Policy页面 (/privacy)
+- [ ] 创建Terms & Conditions页面 (/terms)
+- [ ] 添加WhatsApp悬浮按钮（需要用户提供号码）
+- [ ] 优化所有图片Alt标签
+
+### 需要用户配合的任务
+- [ ] GA4配置（需要用户提供Measurement ID）
+- [ ] Meta Pixel配置（需要用户提供Pixel ID）
+- [ ] 邮件服务集成（需要用户提供Resend API Key）
+- [ ] 在线客服集成（可选，需要用户提供Tawk.to代码）
+
+### 文档
+- [x] 创建营销优化执行计划文档 (docs/Marketing-Optimization-Execution-Plan-CN.md)
+
+## Phase 19: Admin Portal全面修复 (Jan 20, 2026)
+
+### Startups页面
+- [x] 将"Illuminious Startups Program"文字改为全白色
+
+### Admin Portal登录/登出
+- [x] 修复登录后不自动跳转到Dashboard的问题 (已通过window.location.reload()实现)
+- [x] 修复登出后不跳转到首页的问题
+
+### Admin Portal文章管理
+- [x] 修复保存草稿功能 (代码已存在，使用trpc.posts.create/update)
+- [x] 修复发布功能 (代码已存在，使用status="published")
+- [x] 添加图片上传功能（使用内置S3存储） - 代码已存在，使用trpc.posts.uploadImage
+- [x] 添加图片预览功能 - 已添加到RichTextEditor组件
+- [x] 添加视频预览功能 - 已添加YouTube视频预览
+
+## Phase 20: Admin页面分离 (Jan 20, 2026)
+
+### 分离Admin登录和Dashboard
+- [x] 创建独立的AdminLogin页面 (/admin/login)
+- [x] 创建独立的AdminDashboard页面 (/admin/dashboard)
+- [x] 更新App.tsx路由配置
+- [x] 登录成功后使用window.location.href跳转到/admin/dashboard
+- [x] 登出后使用window.location.href跳转到首页
+
+## Phase 21: Admin Dashboard功能修复 (Jan 20, 2026)
+
+### 文章同步问题
+- [x] 修复Dashboard使用数据库存储文章 - 使用trpc.posts.list/create/update/delete
+- [x] 确保发布的文章在News/Blog页面实时显示 - 使用refetchPosts()刷新
+
+### UI尺寸问题
+- [x] 增大登录页面尺寸 - max-w-xl, 更大的输入框和按钮
+- [x] 增大Dashboard编辑器尺寸 - max-w-5xl弹窗, 15行内容区域, 全宽布局
+
+### 图片上传问题
+- [x] 修复图片上传功能 - 支持文件上传和URL两种方式, 带实时预览
+
+## Phase 22: Admin Dashboard重构 - 文章管理子页面 (Jan 20, 2026)
+
+### 独立文章编辑页面
+- [x] 创建 /admin/posts/new 新建文章页面
+- [x] 创建 /admin/posts/:id 编辑文章页面
+- [x] 支持富文本编辑、图片上传、视频插入
+
+### Dashboard文章列表
+- [x] 在Dashboard显示草稿文章列表
+- [x] 在Dashboard显示已发布文章列表
+- [x] 显示文章标题、类型、状态、创建时间
+
+### 编辑和删除功能
+- [x] 支持编辑已发布的文章
+- [x] 支持删除文章（草稿和已发布）
+- [x] 添加确认删除对话框
+
+### 路由配置
+- [x] 更新App.tsx添加新路由
+
+
+## Phase 23: 全站重构 - 按照导航与SEO方案 (Jan 28, 2026)
+
+### 基础设施
+- [x] 删除Admin Portal相关页面和路由
+- [x] 部署GTM代码(GTM-TV3WNHSZ)到head和body
+- [x] 更新最新版Logo
+
+### 首页(HOME)重构
+- [x] Hero Section: 全球制造网络背景，H1:"From the First 100 to the Next 1 Million"
+- [x] Split Section: 双轨选择(Innovators vs Scaling)
+- [x] China+2 Advantage: 世界地图高亮LA/深圳/印尼
+- [x] Trusted By: 客户Logo墙
+- [x] SEO: Title/Meta优化
+
+### 关于我们(ABOUT US)重构
+- [x] US Foundation Section: 美国法律实体/IP保护
+- [x] Shenzhen Brain Section: JDM能力/Hardware Co-pilots
+- [x] Leadership Team Section: 核心人物展示
+- [x] Compliance Section: ISO/UL证书展示
+- [x] Our Story: China+2策略故事
+
+### 服务(SERVICES)页面体系
+- [x] 父页面: End-to-End Solutions (三级火箭全流程)
+- [x] 子页面: NPI & Engineering (NPI与工程)
+- [x] 子页面: PCB Assembly (PCBA组装)
+- [x] 子页面: Box Build & System Integration (成品组装)
+- [x] 子页面: Plastic Injection & Tooling (注塑与模具)
+- [x] 子页面: Supply Chain & Logistics (供应链与物流)
+
+### 工厂巡礼(FACTORY TOUR)
+- [x] Video Hero Section
+- [x] Shenzhen Innovation Lab Section
+- [x] Indonesia Mega Factory Section
+- [x] Virtual Tour CTA Section
+- [x] Copy Exact Promise Section
+
+### 成功案例(CASE STUDIES)
+- [x] 案例列表页(带筛选功能)
+- [x] 按行业分类: Consumer Electronics, Smart Home, Industrial
+- [x] 按挑战分类: Cost Reduction, Tariff Avoidance, Complex Engineering
+- [x] 旗舰案例: Tariff Escape详细页面
+
+### 行业解决方案(INDUSTRIES)
+- [x] IoT & Smart Home页面
+- [x] Consumer Electronics页面
+- [x] Automotive & Industrial页面
+- [x] Medical & Healthcare页面
+
+### 能力(CAPABILITIES)
+- [x] Manufacturing Facilities页面
+- [x] Quality Control页面
+- [x] IoT Specialization页面
+
+### Blog重构
+- [x] Market Insights分类
+- [x] Engineering Tech分类
+- [x] Company News分类
+
+### 导航菜单
+- [x] Mega Menu结构实现
+- [x] Services下拉菜单
+- [x] Industries下拉菜单
+- [x] 移动端导航优化
+
+### 移动端优化
+- [x] 响应式布局检查
+- [x] 移动端Logo显示
+- [x] 触摸友好的交互
+- [x] 文字排版优化
+
+### SEO优化
+- [x] 所有页面Title Tag
+- [x] 所有页面Meta Description
+- [x] 结构化数据
+- [x] 图片Alt标签
