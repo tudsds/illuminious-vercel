@@ -449,13 +449,13 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-illuminious-navy to-illuminious-blue">
+      <section className="py-20 bg-white">
         <div className="container">
           <AnimatedSection className="text-center max-w-3xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-illuminious-navy mb-4">
               Ready to Partner With Us?
             </h2>
-            <p className="text-lg text-illuminious-light/90 mb-8">
+            <p className="text-lg text-illuminious-navy/80 mb-8">
               Let's discuss how we can help bring your product vision to life
               with our comprehensive manufacturing solutions.
             </p>
@@ -463,7 +463,7 @@ export default function About() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-illuminious-navy hover:bg-illuminious-light rounded-full px-8"
+                className="bg-illuminious-sky text-white hover:bg-illuminious-blue rounded-full px-8"
               >
                 <Link href="/contact">
                   Get a Quote
@@ -473,8 +473,7 @@ export default function About() {
               <Button
                 asChild
                 size="lg"
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 rounded-full px-8"
+                className="bg-illuminious-navy text-white hover:bg-illuminious-blue rounded-full px-8"
               >
                 <Link href="/factory-tour">Book a Factory Tour</Link>
               </Button>
