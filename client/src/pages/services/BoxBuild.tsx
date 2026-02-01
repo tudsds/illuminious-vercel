@@ -41,7 +41,7 @@ const capabilities = [
 
 const specs = [
   { label: "Labor Cost Savings", value: "40-60%" },
-  { label: "Landed Cost", value: "Optimized" },
+  { label: "US Tariff", value: "0%" },
   { label: "Production Capacity", value: "10K+/Month" },
   { label: "Quality Standard", value: "ISO 9001" },
 ];
@@ -101,7 +101,7 @@ export default function ServiceBoxBuild() {
                 Box Build & System Integration
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Complete product assembly in our Indonesia facility. Leverage optimized landed costs 
+                Complete product assembly in our Indonesia facility. Leverage 0% US tariffs 
                 and significant labor cost savings without compromising quality.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -140,7 +140,7 @@ export default function ServiceBoxBuild() {
               <AnimatedSection key={spec.label} delay={index * 0.1}>
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1">{spec.value}</div>
-                  <div className="text-sm text-illuminious-light/70">{spec.label}</div>
+                  <div className="text-sm text-white">{spec.label}</div>
                 </div>
               </AnimatedSection>
             ))}
@@ -209,8 +209,8 @@ export default function ServiceBoxBuild() {
                       <CheckCircle className="w-5 h-5 text-green-600" />
                     </div>
                     <div>
-                      <strong className="text-illuminious-navy">Optimized Landed Costs</strong>
-                      <p className="text-sm text-muted-foreground">Products assembled in Indonesia benefit from favorable trade agreements.</p>
+                      <strong className="text-illuminious-navy">0% US Tariffs</strong>
+                      <p className="text-sm text-muted-foreground">Products assembled in Indonesia qualify for duty-free import to the US.</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -228,7 +228,7 @@ export default function ServiceBoxBuild() {
                     </div>
                     <div>
                       <strong className="text-illuminious-navy">Copy Exact Process</strong>
-                      <p className="text-sm text-muted-foreground">Validated processes transferred from our NPI center ensure consistent quality.</p>
+                      <p className="text-sm text-muted-foreground">Validated processes transferred from Shenzhen ensure consistent quality.</p>
                     </div>
                   </li>
                 </ul>
@@ -245,7 +245,7 @@ export default function ServiceBoxBuild() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Scale Your Production?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Let us show you how our Indonesia facility can reduce your costs while maintaining quality.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

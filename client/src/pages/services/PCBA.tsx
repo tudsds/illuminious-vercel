@@ -90,7 +90,7 @@ export default function ServicePCBA() {
             >
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-2xl">🇭🇰</span>
-                <span className="text-sm font-medium text-illuminious-blue">Phase 2 - Asia Pacific</span>
+                <span className="text-sm font-medium text-illuminious-blue">Phase 2 - Shenzhen</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-illuminious-navy mb-6">
                 PCB Assembly (PCBA)
@@ -135,7 +135,7 @@ export default function ServicePCBA() {
               <AnimatedSection key={spec.label} delay={index * 0.1}>
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1">{spec.value}</div>
-                  <div className="text-sm text-illuminious-light/70">{spec.label}</div>
+                  <div className="text-sm text-white">{spec.label}</div>
                 </div>
               </AnimatedSection>
             ))}
@@ -241,7 +241,7 @@ export default function ServicePCBA() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Start Your PCBA Project?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Send us your Gerber files and BOM for a quick quote.
             </p>
             <Button

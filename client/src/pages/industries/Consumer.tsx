@@ -31,7 +31,7 @@ const advantages = [
   {
     icon: DollarSign,
     title: "Cost Optimized",
-    description: "Indonesia assembly delivers 40-60% labor cost savings with optimized landed costs.",
+    description: "Indonesia assembly delivers 40-60% labor cost savings with 0% US tariffs.",
   },
   {
     icon: Zap,
@@ -191,7 +191,7 @@ export default function IndustryConsumer() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Scale Your Consumer Product?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Let's discuss how we can help you compete on cost without compromising quality.
             </p>
             <Button

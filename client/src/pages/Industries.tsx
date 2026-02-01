@@ -185,7 +185,7 @@ export default function Industries() {
             {[
               { title: "Quality Systems", desc: "ISO 9001, ISO 13485, IATF 16949 ready" },
               { title: "Global Certifications", desc: "FCC, CE, IC, MIC, RCM support" },
-              { title: "Supply Chain", desc: "Global sourcing options" },
+              { title: "Supply Chain", desc: "Non-China sourcing options" },
               { title: "US Fulfillment", desc: "West Coast warehouse" },
             ].map((item, index) => (
               <AnimatedSection key={item.title} delay={index * 0.1}>
@@ -206,7 +206,7 @@ export default function Industries() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Don't See Your Industry?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               We work with companies across many industries. Contact us to discuss 
               your specific requirements.
             </p>

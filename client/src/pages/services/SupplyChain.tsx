@@ -19,7 +19,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const capabilities = [
   {
     icon: Globe,
-    title: "Global BOM Sourcing",
+    title: "Non-China BOM Sourcing",
     description: "Strategic component sourcing from Taiwan, Japan, Korea, and Southeast Asia to diversify your supply chain.",
   },
   {
@@ -104,7 +104,7 @@ export default function ServiceSupplyChain() {
     <>
       <SEO
         title="Supply Chain & Logistics | Global Fulfillment | US Warehouse | Illuminious"
-        description="End-to-end supply chain management with global sourcing, US warehousing, and global logistics. DDP/DDU shipping with customs clearance support."
+        description="End-to-end supply chain management with non-China sourcing, US warehousing, and global logistics. DDP/DDU shipping with customs clearance support."
         keywords="supply chain management, logistics, US warehouse, component sourcing, BOM sourcing, DDP shipping"
         url="/services/supply-chain"
       />
@@ -167,7 +167,7 @@ export default function ServiceSupplyChain() {
               <AnimatedSection key={spec.label} delay={index * 0.1}>
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1">{spec.value}</div>
-                  <div className="text-sm text-illuminious-light/70">{spec.label}</div>
+                  <div className="text-sm text-white">{spec.label}</div>
                 </div>
               </AnimatedSection>
             ))}
@@ -255,7 +255,7 @@ export default function ServiceSupplyChain() {
             <AnimatedSection delay={0.2}>
               <div className="bg-illuminious-navy rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-white mb-4">
-                  The Global Sourcing Advantage
+                  The Non-China Sourcing Advantage
                 </h3>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
@@ -264,7 +264,7 @@ export default function ServiceSupplyChain() {
                     </div>
                     <div>
                       <strong className="text-white">Supply Chain Resilience</strong>
-                      <p className="text-sm text-illuminious-light/70">Reduce dependency on any single region with diversified sourcing.</p>
+                      <p className="text-sm text-white">Reduce dependency on any single region with diversified sourcing.</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -273,7 +273,7 @@ export default function ServiceSupplyChain() {
                     </div>
                     <div>
                       <strong className="text-white">Tariff Optimization</strong>
-                      <p className="text-sm text-illuminious-light/70">Strategic sourcing to minimize import duties and tariffs.</p>
+                      <p className="text-sm text-white">Strategic sourcing to minimize import duties and tariffs.</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -282,7 +282,7 @@ export default function ServiceSupplyChain() {
                     </div>
                     <div>
                       <strong className="text-white">Quality Assurance</strong>
-                      <p className="text-sm text-illuminious-light/70">Access to premium components from Japan, Taiwan, and Korea.</p>
+                      <p className="text-sm text-white">Access to premium components from Japan, Taiwan, and Korea.</p>
                     </div>
                   </li>
                 </ul>
@@ -299,7 +299,7 @@ export default function ServiceSupplyChain() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Optimize Your Supply Chain?
             </h2>
-            <p className="text-lg text-illuminious-light/80 mb-8">
+            <p className="text-lg text-white mb-8">
               Let us analyze your BOM and logistics needs for a customized solution.
             </p>
             <Button
