@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import client from "@/lib/db";
-import resend from "@/lib/resend";
+import { getResend } from "@/lib/resend";
 
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Send email notification
-    await resend.emails.send({
+    await getResend().emails.send({
       from: process.env.RESEND_FROM_EMAIL || "info@illuminious.com",
       to: "info@illuminious.com",
       subject: `New Contact Form Submission from ${name}`,

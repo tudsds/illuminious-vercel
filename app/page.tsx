@@ -1,78 +1,26 @@
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   ArrowRight,
   Factory,
   Globe,
   Lightbulb,
-  Rocket,
-  Scale,
-  Shield,
   CheckCircle,
   ChevronRight,
+  Scale,
+  Shield,
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
+import { FadeInUp, ScrollIndicator } from "@/components/HomeHeroAnimations";
 
 const stats = [
   { value: "500+", label: "Products Delivered" },
   { value: "50+", label: "Global Partners" },
   { value: "15+", label: "Years Experience" },
   { value: "99%", label: "Client Satisfaction" },
-];
-
-const advantages = [
-  {
-    icon: Shield,
-    title: "Risk-Free",
-    description: "Contracts signed in the US, protected by US law. Your IP is safe.",
-  },
-  {
-    icon: Scale,
-    title: "Tariff-Free",
-    description: "Optimized duty solutions via our Indonesia manufacturing hub.",
-  },
-  {
-    icon: Zap,
-    title: "Hassle-Free",
-    description: "Native English communication with zero time-zone lag.",
-  },
-];
-
-const locations = [
-  {
-    flag: "🇺🇸",
-    country: "USA",
-    city: "Palo Alto, CA",
-    role: "The Brain",
-    description: "Legal security, IP protection, and local support. You deal with a US entity, not an overseas shell company.",
-  },
-  {
-    flag: "🇨🇳",
-    country: "China",
-    city: "Shenzhen",
-    role: "The Speed",
-    description: "Unmatched engineering depth and supply chain speed. NPI in days, not weeks.",
-  },
-  {
-    flag: "🇮🇩",
-    country: "Indonesia",
-    city: "Batam FTZ",
-    role: "The Scale",
-    description: "Unbeatable labor costs for high-volume orders. Your solution for massive scalability with optimized tariffs.",
-  },
-];
-
-const trustedLogos = [
-  { name: "TechCorp", initial: "T" },
-  { name: "InnovateLabs", initial: "I" },
-  { name: "SmartDevices", initial: "S" },
-  { name: "FutureTech", initial: "F" },
-  { name: "GlobalIoT", initial: "G" },
-  { name: "NextGen", initial: "N" },
 ];
 
 export const metadata = {
@@ -85,7 +33,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background */}
@@ -101,52 +49,34 @@ export default function Home() {
 
         <div className="container relative z-10 pt-32 pb-20">
           <div className="max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <FadeInUp>
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/80 backdrop-blur-sm text-white text-sm font-medium mb-6 border border-sky-400/30">
                 <Globe className="w-4 h-4" />
                 The New Standard for Resilient Manufacturing
               </span>
-            </motion.div>
+            </FadeInUp>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
-            >
-              From the First 100 to the{" "}
-              <span className="text-sky-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Next 1 Million</span>
-            </motion.h1>
+            <FadeInUp delay={0.1}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
+                From the First 100 to the{" "}
+                <span className="text-sky-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Next 1 Million</span>
+              </h1>
+            </FadeInUp>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg sm:text-xl md:text-2xl text-white/90 mb-3 md:mb-4 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
-            >
-              US Engineering. Shenzhen Speed. Southeast Asia Scale.
-            </motion.p>
+            <FadeInUp delay={0.2}>
+              <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-3 md:mb-4 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                US Engineering. Shenzhen Speed. Southeast Asia Scale.
+              </p>
+            </FadeInUp>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-base sm:text-lg text-white/80 mb-6 md:mb-8 leading-relaxed max-w-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
-            >
-              Accelerate NPI in Shenzhen. Scale duty-free in Southeast Asia. 
-              Managed securely from our Palo Alto HQ.
-            </motion.p>
+            <FadeInUp delay={0.25}>
+              <p className="text-base sm:text-lg text-white/80 mb-6 md:mb-8 leading-relaxed max-w-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                Accelerate NPI in Shenzhen. Scale duty-free in Southeast Asia.
+                Managed securely from our Palo Alto HQ.
+              </p>
+            </FadeInUp>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
+            <FadeInUp delay={0.3} className="flex flex-col sm:flex-row gap-4">
               <Button
                 asChild
                 size="lg"
@@ -165,25 +95,12 @@ export default function Home() {
               >
                 <Link href="/factory-tour">Book a Factory Tour</Link>
               </Button>
-            </motion.div>
+            </FadeInUp>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-white/50 flex items-start justify-center p-2"
-          >
-            <motion.div className="w-1.5 h-1.5 rounded-full bg-white" />
-          </motion.div>
-        </motion.div>
+        <ScrollIndicator />
       </section>
 
       {/* Rest of the page content */}
@@ -194,7 +111,7 @@ export default function Home() {
               Stop Choosing Between Cost and Safety
             </h2>
             <p className="text-lg text-muted-foreground">
-              We deliver the perfect balance. Whether you&apos;re an innovator building your first prototype 
+              We deliver the perfect balance. Whether you&apos;re an innovator building your first prototype
               or an enterprise scaling to millions, we have the right solution.
             </p>
           </div>
@@ -213,7 +130,7 @@ export default function Home() {
                   Need Engineering & NPI?
                 </h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Leverage our Shenzhen engineering center for rapid iteration. 
+                  Leverage our Shenzhen engineering center for rapid iteration.
                   From concept to &quot;Golden Sample&quot; in days, not weeks.
                 </p>
                 <ul className="space-y-2 mb-6">
@@ -250,7 +167,7 @@ export default function Home() {
                   Need Cost Reduction & Volume?
                 </h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Utilize our Southeast Asian facilities for tariff-free mass production 
+                  Utilize our Southeast Asian facilities for tariff-free mass production
                   with unbeatable labor costs.
                 </p>
                 <ul className="space-y-2 mb-6">
@@ -301,7 +218,7 @@ export default function Home() {
               Ready to Start Your Project?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Whether you need rapid prototyping or high-volume production, 
+              Whether you need rapid prototyping or high-volume production,
               our team is ready to help you succeed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
