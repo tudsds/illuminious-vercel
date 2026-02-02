@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
     if (!result.success) {
       return NextResponse.json(
-        { error: "Invalid form data", details: result.error.errors },
+        { error: "Invalid form data", details: result.error.issues },
         { status: 400 }
       );
     }
