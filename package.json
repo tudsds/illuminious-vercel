@@ -46,6 +46,7 @@
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.22",
     "input-otp": "^1.4.2",
+    "@libsql/client": "^0.14.0",
     "libsql": "^0.5.3",
     "lucide-react": "^0.453.0",
     "next": "^15.1.0",
